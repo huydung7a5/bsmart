@@ -1,0 +1,198 @@
+.headerindextop {
+    background-color: #0e0a38;
+    height: 3.5em;
+    justify-content: space-around;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+}
+header{
+    position: absolute;
+    width: 100%;
+    top: 0;
+}
+.headericon {
+    flex-direction: row;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 40%;
+    color: white;
+    font-size: 14px;
+}
+
+.headericonleft {
+    flex-direction: row;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    color: white;
+    margin-left: 4.5%;
+}
+
+.headericonright {
+    flex-direction: row;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 60%;
+    color: white;
+    font-size: 14px;
+}
+
+.headericon1 {
+    flex-direction: row;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 10%;
+    color: white;
+    font-size: 12px;
+
+}
+
+
+
+.headericon2 {
+    flex-direction: row;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 27.5%;
+    color: white;
+    font-size: 14px;
+}
+
+h5 {
+    color: white;
+    font-style: times new roman;
+}
+
+.icon {
+    width: 17%;
+    height: 17%;
+}
+
+.viewheader {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 14px;
+}
+
+.input {
+    margin-left: 5%;
+    width: 51.5%;
+    background-color: #27234c;
+    color: white;
+    border-color: #0e0a38;
+    height: 2.3em;
+}
+.input::placeholder {
+    color: white;
+  }
+
+.viewlogin {
+    flex-direction: row;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 14px;
+    width: 30%;
+}
+
+.login {
+    height: auto;
+    background-color: #0e0a38;
+    color: white;
+    border-color: #0e0a38;
+    flex-direction: row;
+    align-items: center;
+    margin: 3px;
+}
+
+.login:hover {
+    color: rgb(243, 90, 35);
+}
+
+.logo {
+    margin-left: 5%;
+    width: 15%;
+    height: 60%;
+}
+
+.shopingcard {
+    width: 50%;
+    height: 90%;
+}
+
+.menu {
+    width: 70%;
+    height: auto;
+    display: flex;
+    list-style-type: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu1 {
+    font-weight: 600;
+    height: auto;
+    display: flex;
+    list-style-type: none;
+    margin-left: 10px;
+    font-size: 14px;
+}
+.menu1:hover {
+    color: rgb(243, 90, 35);
+}
+p {
+    font-size: 13px;
+}
+
+.soping {
+    width: 15%;
+    height: 60%;
+}
+
+.headerindexbottom {
+    width: 100%;
+    background-color: white;
+    position: fixed;
+    height: 6em;
+    justify-content: space-around;
+    align-items: center;
+    display: flex;
+    box-shadow: 0px 0px 10px 0px rgba(124, 117, 117, 0.75);
+}
+
+.banner {
+    width: 100%;
+    height: 100%;
+}
+nav{
+    width: 100%;
+   margin-top: 7%;
+
+}
+.viewnav {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+   
+}
+.viewbackground {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
