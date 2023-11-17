@@ -81,7 +81,7 @@ function Frontend() {
 
     }
     const onchangede = (e) => {
-        if (e.target.option) {
+        if (e.target.checked) {
             const newData = data.filter((item) => item.trinhdo === 'Dễ');
             setData(newData);
         } else {
@@ -109,6 +109,10 @@ function Frontend() {
         } else if (value === '4') {
             const newData = [...Data];
             newData.sort((a, b) => a.title.localeCompare(b.title, 'en', { sensitivity: 'base' }));
+            setData(newData);
+        } else if (value === '5') {
+            const newData = [...Data];
+            newData.sort((a, b) => b.title.localeCompare(a.title, 'en', { sensitivity: 'base' }));
             setData(newData);
         } else {
             setData(data);
@@ -169,7 +173,7 @@ function Frontend() {
                         </li>
                         <li className='menu1'>Về chúng tôi</li>
                         <li className='menu1'>Khoá học STEM</li>
-                        <li className='menu1'>Khoá Học
+                        <li className='menu1' style={{ color: '#ff630e' }}>Khoá Học
                             <ul className='submenu'>
                                 <li className='submenu1'>
                                     <Link className='link' onClick={handlereload} >
@@ -308,7 +312,7 @@ function Frontend() {
                     <p className='doingu'> Mentor</p>
                     <p className='doingu'> Blog</p>
                 </div>
-                <div className='view2'>
+                <div className='view3'>
                     <p className='txtcheck' >Điều Khoản</p>
                     <p className='doingu'> Chính sách bảo mật</p>
                     <p className='doingu'> Điều khoản dịch vụ</p>
@@ -318,7 +322,7 @@ function Frontend() {
                 </div>
                 <div className='view1'>
                     <p className='txtcheck' >Liên hệ với chúng tôi</p>
-                    <p className='doingu'>  Tòa S9.02A, Vinhomes Grand Park, TP.Thủ Đức</p>
+                    <p className='doingu'>Tòa S9.02A, Vinhomes Grand Park, TP.Thủ Đức</p>
                     <div className='viewf'>
                         <img className='iconf' src={gmail} alt="" />
                         admin@bsmart.edu.vn</div>
@@ -326,7 +330,9 @@ function Frontend() {
                         <img className='iconf' src={phone} alt="" />
                         028 9999 79 39</div>
                 </div>
+                <p className='banquyen'>© Bản quyền BSmart 2023 - Empowered by BSmart - version 1.1.13</p>
             </div>
+
         </body>
     );
 }

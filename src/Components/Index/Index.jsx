@@ -1,4 +1,4 @@
-import { FacebookOutlined, YoutubeOutlined, CheckCircleOutlined, SettingOutlined, FireOutlined, TeamOutlined, QrcodeOutlined, TrophyOutlined } from '@ant-design/icons';
+import { FacebookOutlined, YoutubeOutlined, CheckCircleOutlined, SettingOutlined, FireOutlined, DatabaseOutlined, TeamOutlined, QrcodeOutlined, TrophyOutlined } from '@ant-design/icons';
 import { BrowserRouter as Router, Route, Navigate, Outlet, Routes, Link } from 'react-router-dom';
 import gmail from '../../assets/images/icon-gmail.png';
 import phone from '../../assets/images/icon-phone.png';
@@ -10,6 +10,7 @@ import banner2 from '../../assets/images/banner-2.png';
 import banner3 from '../../assets/images/banner-3.png';
 import banner4 from '../../assets/images/banner-4.png';
 import bannerfooter from '../../assets/images/icon-logo-footer.png';
+import location from '../../assets/images/icon-location.png';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -72,7 +73,7 @@ function Index() {
         ],
 
     };
-    
+
     const goToNextSlide3 = () => {
         sliderRef3.current.slickNext();
     };
@@ -316,10 +317,11 @@ function Index() {
                                                 <p className='khoangcach1'>Mentor</p>
                                                 <p className='khoangcach'>{item.mentor}</p>
                                             </p>
+                                            <p className='detailfe'> <TeamOutlined />{item.songuoihoc} Học viên</p>
                                             <p className='detailfe'>{item.detail}</p>
                                             <p className='mentorfe1'>
                                                 <p className='khoangcach2'> {item.price} VNĐ</p>
-                                                <i className='khoangcach3'>{item.date} Buổi học</i>
+                                                <i className='khoangcach3'><DatabaseOutlined /> {item.date} Buổi học</i>
                                             </p>
                                             <div className='viewfe4'>
                                                 <Button className='btnfe'>Xem chi tiết</Button>
@@ -349,10 +351,11 @@ function Index() {
                                             <p className='khoangcach1'>Mentor</p>
                                             <p className='khoangcach'>{item.mentor}</p>
                                         </p>
+                                        <p className='detailfe'> <TeamOutlined />{item.songuoihoc} Học viên</p>
                                         <p className='detailfe'>{item.detail}</p>
                                         <p className='mentorfe1'>
                                             <p className='khoangcach2'> {item.price} VNĐ</p>
-                                            <i className='khoangcach3'>{item.date} Buổi học</i>
+                                            <i className='khoangcach3'><DatabaseOutlined /> {item.date} Buổi học</i>
                                         </p>
                                         <div className='viewfe4'>
                                             <Button className='btnfe'>Xem chi tiết</Button>
@@ -416,6 +419,7 @@ function Index() {
                     </div>
                 </div>
             </div>
+
             <div className='bottom'>
                 <div className='view1'>
                     <img className='bannerf' src={bannerfooter} />
@@ -434,7 +438,7 @@ function Index() {
                     <p className='doingu'> Mentor</p>
                     <p className='doingu'> Blog</p>
                 </div>
-                <div className='view2'>
+                <div className='view3'>
                     <p className='txtcheck' >Điều Khoản</p>
                     <p className='doingu'> Chính sách bảo mật</p>
                     <p className='doingu'> Điều khoản dịch vụ</p>
@@ -444,7 +448,7 @@ function Index() {
                 </div>
                 <div className='view1'>
                     <p className='txtcheck' >Liên hệ với chúng tôi</p>
-                    <p className='doingu'>  Tòa S9.02A, Vinhomes Grand Park, TP.Thủ Đức</p>
+                    <p className='viewf'>  <img className='iconf' src={location} alt="" />Tòa S9.02A, Vinhomes Grand Park, TP.Thủ Đức</p>
                     <div className='viewf'>
                         <img className='iconf' src={gmail} alt="" />
                         admin@bsmart.edu.vn</div>
@@ -452,7 +456,9 @@ function Index() {
                         <img className='iconf' src={phone} alt="" />
                         028 9999 79 39</div>
                 </div>
+                <p className='banquyen'>© Bản quyền BSmart 2023 - Empowered by BSmart - version 1.1.13</p>
             </div>
+
         </body>
     );
 }
@@ -477,8 +483,9 @@ const data = [{
     detail: "HTML (hay Hypertext Markup Language) là ngôn ngữ đánh dấu siêu văn bản. Nó hỗ trợ người dùng xây",
     date: 18,
     price: 25000000,
-    hinhthuc: 'Online'
-
+    hinhthuc: 'Online',
+    trinhdo: 'Dễ',
+    songuoihoc: 21
 }, {
     url: 'https://bsmart.edu.vn/files/CourseImage/2-8.jpg',
     title: 'JavaScript',
@@ -486,7 +493,9 @@ const data = [{
     detail: "HTML (hay Hypertext Markup Language) là ngôn ngữ đánh dấu siêu văn bản. Nó hỗ trợ người dùng xây",
     date: 18,
     price: 25000000,
-    hinhthuc: 'Offline'
+    hinhthuc: 'Offline',
+    trinhdo: 'Dễ',
+    songuoihoc: 28
 }, {
     url: 'https://bsmart.edu.vn/files/CourseImage/html-vs-css.png',
     title: 'HTML & CSS_Basic',
@@ -494,7 +503,9 @@ const data = [{
     detail: "HTML (hay Hypertext Markup Language) là ngôn ngữ đánh dấu siêu văn bản. Nó hỗ trợ người dùng xây",
     date: 18,
     price: 30000000,
-    hinhthuc: 'Online'
+    hinhthuc: 'Online',
+    trinhdo: 'Dễ',
+    songuoihoc: 13
 }, {
     url: "https://bsmart.edu.vn/files/CourseImage/html-770x515.jpg",
     title: 'HTML & CSS',
@@ -502,7 +513,9 @@ const data = [{
     detail: "HTML (hay Hypertext Markup Language) là ngôn ngữ đánh dấu siêu văn bản. Nó hỗ trợ người dùng xây",
     date: 18,
     price: 30000000,
-    hinhthuc: 'Offline'
+    hinhthuc: 'Offline',
+    trinhdo: 'Khó',
+    songuoihoc: 16
 }, {
     url: 'https://bsmart.edu.vn/files/CourseImage/reactjs.png',
     title: 'ReactJS',
@@ -510,7 +523,37 @@ const data = [{
     detail: "HTML (hay Hypertext Markup Language) là ngôn ngữ đánh dấu siêu văn bản. Nó hỗ trợ người dùng xây",
     date: 18,
     price: 27000000,
-    hinhthuc: 'Online'
+    hinhthuc: 'Online',
+    songuoihoc: 18
+}, {
+    url: 'https://bsmart.edu.vn/files/CourseImage/2-8.jpg',
+    title: 'JavaScript_Basic',
+    mentor: 'Nguyễn Thị Trà My',
+    detail: "HTML (hay Hypertext Markup Language) là ngôn ngữ đánh dấu siêu văn bản. Nó hỗ trợ người dùng xây",
+    date: 18,
+    price: 30000000,
+    hinhthuc: 'Online',
+    songuoihoc: 30
+}, {
+    url: 'https://image.vtc.vn/resize/th/upload/2021/12/20/1154-12344056.jpg',
+    title: 'ReactJS Fundamental',
+    mentor: 'Đỗ Minh Quân',
+    detail: "HTML (hay Hypertext Markup Language) là ngôn ngữ đánh dấu siêu văn bản. Nó hỗ trợ người dùng xây",
+    date: 18,
+    price: 27000000,
+    hinhthuc: 'Offline',
+    trinhdo: 'Trung bình',
+    songuoihoc: 22
+}, {
+    url: 'https://bsmart.edu.vn/files/CourseImage/2-8.jpg',
+    title: 'JavaScript_Basic',
+    mentor: 'Hồ Hồng Minh',
+    detail: "HTML (hay Hypertext Markup Language) là ngôn ngữ đánh dấu siêu văn bản. Nó hỗ trợ người dùng xây",
+    date: 18,
+    price: 30000000,
+    hinhthuc: 'Offline',
+    trinhdo: 'Trung bình',
+    songuoihoc: 16
 }
 ];
 const data1 = [{
