@@ -10,9 +10,15 @@ import banner2 from '../../assets/images/banner-2.png';
 import banner3 from '../../assets/images/banner-3.png';
 import banner4 from '../../assets/images/banner-4.png';
 import bannerfooter from '../../assets/images/icon-logo-footer.png';
-import { Button, Input, } from "antd";
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import { Button, Input, Anchor } from "antd";
 import "./Index1.css";
+import React, { useState, useRef, useEffect } from 'react';
+
 function Index() {
+    const [seconds, setSeconds] = useState(4);
     window.addEventListener('scroll', function () {
         var header = document.querySelector('header');
         var headerTop = document.querySelector('.headerindextop');
@@ -25,8 +31,76 @@ function Index() {
             headerTop.style.display = 'block';
             headerBottom.style.marginTop = headerTop.offsetHeight + '0';
         }
-        
+
     });
+    const sliderRef = useRef(null);
+    const sliderRef1 = useRef(null);
+    const sliderRef2 = useRef(null);
+    const sliderRef3 = useRef(null);
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setSeconds(seconds => seconds - 1);
+        }, 1000);
+        if (seconds <= 0) {
+            setSeconds(4);
+            goToNextSlide3();
+        }
+        return () => clearInterval(interval);
+    }, [seconds]);
+    // Slick settings
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        responsive: [
+            {
+                breakpoint: 108,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                },
+            },
+            {
+                breakpoint: 40,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                },
+            },
+        ],
+
+    };
+    
+    const goToNextSlide3 = () => {
+        sliderRef3.current.slickNext();
+    };
+
+    const goToNextSlide = () => {
+        sliderRef.current.slickNext();
+    };
+
+    const goToPrevSlide = () => {
+        sliderRef.current.slickPrev();
+    };
+    const goToNextSlide1 = () => {
+        sliderRef1.current.slickNext();
+    };
+
+    const goToPrevSlide1 = () => {
+        sliderRef1.current.slickPrev();
+    };
+    const goToNextSlide2 = () => {
+        sliderRef2.current.slickNext();
+    };
+
+    const goToPrevSlide2 = () => {
+        sliderRef2.current.slickPrev();
+    };
+    const handleclick = () => {
+        window.location.href = "/frontend";
+    }
     return (
         <body>
             <header >
@@ -82,11 +156,11 @@ function Index() {
                         <li className='menu1'>Khoá Học
                             <ul className='submenu'>
                                 <li className='submenu1'>
-                                    <Link className='link' to={"/frontend"}>Frontend</Link>
+                                    <Link className='link' onClick={handleclick}>
+                                        Frontend</Link>
                                 </li>
                                 <li className='submenu1'>
-                                    <Link className='link' to={"/backend"}>
-                                        Back-End</Link></li>
+                                    Back-End</li>
                                 <li className='submenu1'>Database</li>
                                 <li className='submenu1'>Cấp tốc</li>
                                 <li className='submenu1'>Other</li>
@@ -229,15 +303,119 @@ function Index() {
                     <div className='title'>
                         <h1>Khoá học tiêu biểu</h1>
                     </div>
-                    <div>
-                        <div>
-                            <div>
+                    <div className='viewtitlefe'>
+                        <h5 className='btn' onClick={goToPrevSlide}>{'<'}</h5>
+                        <div className='slider'>
+                            <Slider ref={sliderRef} {...settings}>
+                                {data.map((item, index) => (
+                                    <div key={index} >
+                                        <div className='feindex'>
+                                            <img className='imgfe' src={item.url} alt="" />
+                                            <h3 className='titlefe'>{item.title}</h3>
+                                            <p className='mentorfe'>
+                                                <p className='khoangcach1'>Mentor</p>
+                                                <p className='khoangcach'>{item.mentor}</p>
+                                            </p>
+                                            <p className='detailfe'>{item.detail}</p>
+                                            <p className='mentorfe1'>
+                                                <p className='khoangcach2'> {item.price} VNĐ</p>
+                                                <i className='khoangcach3'>{item.date} Buổi học</i>
+                                            </p>
+                                            <div className='viewfe4'>
+                                                <Button className='btnfe'>Xem chi tiết</Button>
+                                            </div>
+                                        </div>
 
-                            </div>
+                                    </div>
+                                ))}
+                            </Slider>
                         </div>
+                        <h5 className='btn' onClick={goToNextSlide}>{'>'}</h5>
                     </div>
                 </div>
+                <div className='title'>
+                    <h1>Khoá học cấp tốc</h1>
+                </div>
+                <div className='viewtitlefe'>
+                    <h5 className='btn' onClick={goToPrevSlide1}>{'<'}</h5>
+                    <div className='slider'>
+                        <Slider ref={sliderRef1} {...settings}>
+                            {data.map((item, index) => (
+                                <div key={index} >
+                                    <div className='feindex'>
+                                        <img className='imgfe' src={item.url} alt="" />
+                                        <h3 className='titlefe'>{item.title}</h3>
+                                        <p className='mentorfe'>
+                                            <p className='khoangcach1'>Mentor</p>
+                                            <p className='khoangcach'>{item.mentor}</p>
+                                        </p>
+                                        <p className='detailfe'>{item.detail}</p>
+                                        <p className='mentorfe1'>
+                                            <p className='khoangcach2'> {item.price} VNĐ</p>
+                                            <i className='khoangcach3'>{item.date} Buổi học</i>
+                                        </p>
+                                        <div className='viewfe4'>
+                                            <Button className='btnfe'>Xem chi tiết</Button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            ))}
+                        </Slider>
+                    </div>
+                    <h5 className='btn' onClick={goToNextSlide1}>{'>'}</h5>
+                </div>
+                <div className='title'>
+                    <h1>Mentor tiêu biểu</h1>
+                </div>
+                <div className='viewtitlefe'>
+                    <h5 className='btn' onClick={goToPrevSlide2}>{'<'}</h5>
+                    <div className='slider'>
+                        <Slider ref={sliderRef2} {...settings}>
+                            {data1.map((item, index) => (
+                                <div key={index} >
+                                    <div className={`fementor`}>
+                                        <img className='imgfe' src={item.url} alt="" />
+                                        <h3 className='txtcheck1'>{item.mentor}</h3>
+                                        <p className='detailfe1'>{item.detail}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </Slider>
+                    </div>
+                    <h5 className='btn' onClick={goToNextSlide2}>{'>'}</h5>
+                </div>
             </aside>
+            <div className='dinhhuong'>
+                <div className='title'>
+                    <h3> Định hướng và chuẩn hoá lộ trình học tập</h3>
+                </div>
+                <div className='title'>
+                    <h2>   Học thật, Dự án thật, Mentor tận tâm</h2>
+                </div>
+                <div className='viewbutton'>
+                    <Button className='button'>DANH SÁCH KHOÁ HỌC</Button>
+                    <Button className='button'> TƯ VẤN LỘ TRÌNH HỌC</Button>
+                </div>
+            </div>
+            <div style={{ backgroundColor: "#f5f7fc" }}>
+                <div className='title'>
+                    <h2> Nhận được sự tin tưởng của các đối tác</h2>
+                </div>
+                <div className='viewtitlefe1'>
+                    <div className='slider1'>
+                        <Slider ref={sliderRef3} {...settings}>
+                            {data2.map((item, index) => (
+                                <div key={index} >
+                                    <div className={`fementor1`}>
+                                        <img className='imgfe1' src={item.url} alt="" />
+                                    </div>
+                                </div>
+                            ))}
+                        </Slider>
+                    </div>
+                </div>
+            </div>
             <div className='bottom'>
                 <div className='view1'>
                     <img className='bannerf' src={bannerfooter} />
@@ -278,6 +456,84 @@ function Index() {
         </body>
     );
 }
-
-
 export default Index;
+const data2 = [
+    {
+        url: "https://bsmart.edu.vn/assets/images/logo-dai-hoc-03.webp",
+    }, {
+        url: "https://bsmart.edu.vn/assets/images/logo-dai-hoc-01.webp",
+    }, {
+        url: "https://bsmart.edu.vn/assets/images/logo-dai-hoc-07.webp",
+    }, {
+        url: "https://bsmart.edu.vn/assets/images/logo-dai-hoc-02.webp",
+    }, {
+        url: "https://bsmart.edu.vn/assets/images/logo-dai-hoc-04.webp",
+    }
+];
+const data = [{
+    url: "https://bsmart.edu.vn/files/CourseImage/html-770x515.jpg",
+    title: 'HTML & CSS',
+    mentor: 'Đỗ Minh Quân',
+    detail: "HTML (hay Hypertext Markup Language) là ngôn ngữ đánh dấu siêu văn bản. Nó hỗ trợ người dùng xây",
+    date: 18,
+    price: 25000000,
+    hinhthuc: 'Online'
+
+}, {
+    url: 'https://bsmart.edu.vn/files/CourseImage/2-8.jpg',
+    title: 'JavaScript',
+    mentor: 'Đoàn Ngọc Trân Châu',
+    detail: "HTML (hay Hypertext Markup Language) là ngôn ngữ đánh dấu siêu văn bản. Nó hỗ trợ người dùng xây",
+    date: 18,
+    price: 25000000,
+    hinhthuc: 'Offline'
+}, {
+    url: 'https://bsmart.edu.vn/files/CourseImage/html-vs-css.png',
+    title: 'HTML & CSS_Basic',
+    mentor: 'Hồ Hồng Minh',
+    detail: "HTML (hay Hypertext Markup Language) là ngôn ngữ đánh dấu siêu văn bản. Nó hỗ trợ người dùng xây",
+    date: 18,
+    price: 30000000,
+    hinhthuc: 'Online'
+}, {
+    url: "https://bsmart.edu.vn/files/CourseImage/html-770x515.jpg",
+    title: 'HTML & CSS',
+    mentor: 'Đỗ Minh Quân',
+    detail: "HTML (hay Hypertext Markup Language) là ngôn ngữ đánh dấu siêu văn bản. Nó hỗ trợ người dùng xây",
+    date: 18,
+    price: 30000000,
+    hinhthuc: 'Offline'
+}, {
+    url: 'https://bsmart.edu.vn/files/CourseImage/reactjs.png',
+    title: 'ReactJS',
+    mentor: 'Nguyễn Viết Châu',
+    detail: "HTML (hay Hypertext Markup Language) là ngôn ngữ đánh dấu siêu văn bản. Nó hỗ trợ người dùng xây",
+    date: 18,
+    price: 27000000,
+    hinhthuc: 'Online'
+}
+];
+const data1 = [{
+    url: "https://bsmart.edu.vn/files/Avatar_Mentor/c8b543a9e0773c296566.webp",
+    mentor: 'Phan Nhật Tân',
+    detail: "Nhật Tân, với kinh nghiệm giảng dạy và chia sẻ cho nhiều học viên, tôi đã xây dựng được niềm tin rất lớn đối với cộng đồng. Hy vọng tôi sẽ đem đến cho các bạn những trải nghiệm đáng quý trong quá trình học tập cùng tôi."
+}, {
+    url: "https://bsmart.edu.vn/files/Avatar_Mentor/qqq.webp",
+    mentor: 'Đỗ Minh Quân',
+    detail: "Tôi tên là Đỗ Minh Quân, tốt nghiệp ngành công nghệ thông tin, chuyên ngành công nghệ phần mềm. Tôi là một lập trình viên Front-end có hơn 3 năm kinh nghiệm trong việc phát triển giao diện cho các trang web và ứng dụng di động. Tôi đã từng tham gia các dự án với công nghệ HTML, CSS, JavaScript, React ... và từ đó tích lũy được nhiều kiến thức, kinh nghiệm trong lĩnh vực này. Tôi muốn chia sẻ kiến thức của mình cho những người mới bắt đầu, giúp họ có thể nhanh chóng tiếp cận và đạt được thành công trong lĩnh vực lập trình Front-end."
+}, {
+    url: "https://bsmart.edu.vn/files/Avatar_Mentor/stem.webp",
+    mentor: 'Team STEM Mentor',
+    detail: "Xin chào mọi người, chúng tôi là giáo viên dạy STEM (khoa học, công nghệ, kỹ thuật và toán học). Chúng tôi đã có kinh nghiệm trong giảng dạy STEM trong nhiều năm và yêu thích công việc của mình. Chúng tôi rất hân hạnh được làm việc trong lĩnh vực này và hy vọng sẽ mang lại cho các em học viên những kiến thức và kỹ năng hữu ích và dẫn đến thành công trong tương lai."
+}, {
+    url: "https://bsmart.edu.vn/files/Avatar_Mentor/aa.webp",
+    mentor: 'Tuấn Anh Phạm',
+    detail: "Xin chào! Tôi là Phạm Tuấn Anh - một lập trình viên với đam mê mãnh liệt về công nghệ thông tin. Tôi đã làm việc trong ngành này trong một vài năm và có kinh nghiệm làm việc với các dự án phần mềm và phát triển ứng dụng. Tôi đã từng dẫn dắt nhiều học sinh, sinh viên từ zero đến hero trong lĩnh vực công nghệ thông tin. Tôi tin rằng công nghệ thông tin sẽ tiếp tục phát triển và luôn tìm cách để cập nhật tin tức mới nhất từ ngành."
+}, {
+    url: "https://bsmart.edu.vn/files/Avatar_Mentor/ezgif-1-95638d4605.webp",
+    mentor: 'Hồ Hồng Minh',
+    detail: "Xin chào, tôi là Hồ Hồng Minh. Tôi có hơn 3 năm kinh nghiệm trong việc giảng dạy và mentor cho các học sinh, sinh viên về chuyên ngành kĩ thuật phần mềm. Tôi đã hướng dẫn nhiều dự án và có thể giúp đỡ học sinh và sinh viên thành công trong việc đạt được các mục tiêu học tập và nghề nghiệp của họ. Ngoài ra, tôi cũng đam mê nghiên cứu và đăng ký các bài báo khoa học để chia sẻ các phát hiện và kiến thức mới với cộng đồng. Tôi tin rằng giáo dục là một công cụ mạnh mẽ để đẩy mạnh sự phát triển của cá nhân, cộng đồng, và tôi mong muốn hỗ trợ các học sinh và sinh viên trong việc đạt được sự thành công trong cuộc sống và nghề nghiệp của họ."
+}
+
+
+];

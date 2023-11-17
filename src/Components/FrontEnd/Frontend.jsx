@@ -10,18 +10,20 @@ import banner2 from '../../assets/images/banner-2.png';
 import banner3 from '../../assets/images/banner-3.png';
 import banner4 from '../../assets/images/banner-4.png';
 import bannerfooter from '../../assets/images/icon-logo-footer.png';
-import { Button, Input, Checkbox, Select } from "antd";
+import { Button, Input, Checkbox, Select, Alert } from "antd";
+
 import { useEffect, useState } from 'react';
 function Frontend() {
     const [number, setnumber] = useState(0);
     const [to, setto] = useState("");
     const [moveto, setmoveto] = useState("");
     const [Data, setData] = useState(data);
+    const [giohang, setgiohang] = useState(0);
+    const [selectedSortOption, setSelectedSortOption] = useState('2');
     window.addEventListener('scroll', function () {
         var header = document.querySelector('header');
         var headerTop = document.querySelector('.headerindextop');
         var headerBottom = document.querySelector('.headerindexbottom');
-
         if (window.pageYOffset > headerTop.offsetHeight) {
             headerTop.style.display = 'none';
             headerBottom.style.marginTop = '0';
@@ -29,26 +31,90 @@ function Frontend() {
             headerTop.style.display = 'block';
             headerBottom.style.marginTop = headerTop.offsetHeight + '0';
         }
-
     });
-    const handlekhoanggia = () => {
+    const handlegiohang = () => {
+        alert('Thêm vào giỏ hàng thành công');
+        setgiohang(giohang + 1);
+    }
+    const handlekhoanggia = (e) => {
         const newData = data.filter((item) => item.price >= to && item.price <= moveto);
-        const newData1 = data.filter((item) => item.hinhthuc === 'Online');
-        const newData2 = data.filter((item) => item.hinhthuc === 'Offline');
         setData(newData);
-        setData(newData1);
-        setData(newData2);
-
+    }
+    const handleindex = () => {
+        window.location.href = "/";
+    }
+    const handlereload = () => {
+        window.location.reload();
     }
     useEffect(() => {
         const interval = setInterval(() => {
             setnumber(data.length);
         });
-       
+
         return () => clearInterval(interval);
     }, [number]);
-    return (
+    const onchange = (e) => {
+        if (e.target.checked) {
+            const newData = data.filter((item) => item.hinhthuc === 'Online');
+            setData(newData);
+        } else {
+            setData(data);
+        }
 
+    }
+    const onchange1 = (e) => {
+        if (e.target.checked) {
+            const newData = data.filter((item) => item.hinhthuc === 'Offline');
+            setData(newData);
+        } else {
+            setData(data);
+        }
+
+    }
+    const onchangekho = (e) => {
+        if (e.target.checked) {
+            const newData = data.filter((item) => item.trinhdo === 'Khó');
+            setData(newData);
+        } else {
+            setData(data);
+        }
+
+    }
+    const onchangede = (e) => {
+        if (e.target.option) {
+            const newData = data.filter((item) => item.trinhdo === 'Dễ');
+            setData(newData);
+        } else {
+            setData(data);
+        }
+
+    }
+    const onchangetrungbinh = (e) => {
+        if (e.target.checked) {
+            const newData = data.filter((item) => item.trinhdo === 'Trung bình');
+            setData(newData);
+        } else {
+            setData(data);
+        }
+
+    }
+    const handleChangeSort = (value) => {
+        // Cập nhật giá trị đã chọn vào state
+        setSelectedSortOption(value);
+        // Thực hiện logic lọc tương ứng với giá trị đã chọn
+        if (value === '2') {
+            const newData = [...Data]; // Tạo một bản sao mới của mảng để tránh thay đổi mảng gốc
+            newData.sort((a, b) => b.songuoihoc - a.songuoihoc); // Sắp xếp mảng theo số người học giảm dần
+            setData(newData);
+        } else if (value === '4') {
+            const newData = [...Data];
+            newData.sort((a, b) => a.title.localeCompare(b.title, 'en', { sensitivity: 'base' }));
+            setData(newData);
+        } else {
+            setData(data);
+        }
+    };
+    return (
         <body>
             <header >
                 <div className="headerindextop">
@@ -97,17 +163,20 @@ function Frontend() {
                 <div className='headerindexbottom'>
                     <img className='logo' src={logo} alt="" />
                     <ul className='menu'>
-                        <li className='menu1'>Trang chủ</li>
+                        <li className='menu2'>
+                            <Link className='link' onClick={handleindex}>
+                                Trang chủ</Link>
+                        </li>
                         <li className='menu1'>Về chúng tôi</li>
                         <li className='menu1'>Khoá học STEM</li>
-                        <li className='menu2'>Khoá Học
+                        <li className='menu1'>Khoá Học
                             <ul className='submenu'>
-                                <li className='submenu1'><a className='link' href="/frontend">
-                                    Front-End </a>
+                                <li className='submenu1'>
+                                    <Link className='link' onClick={handlereload} >
+                                        Frontend</Link>
                                 </li>
                                 <li className='submenu1'>
-                                    <Link className='link' to={"/backend"}>
-                                        Back-End</Link></li>
+                                    Back-End</li>
                                 <li className='submenu1'>Database</li>
                                 <li className='submenu1'>Cấp tốc</li>
                                 <li className='submenu1'>Other</li>
@@ -119,7 +188,7 @@ function Frontend() {
                     </ul>
                     <div className='soping'>
                         <img className='shopingcard' src={shoping} alt="" />
-                        <p className='so'>0</p>
+                        <p className='so'>{giohang}</p>
                     </div>
                 </div>
             </header>
@@ -129,7 +198,7 @@ function Frontend() {
                         <h1 className='viewfetitle1'>Danh sách khoá học</h1>
                         <div className='index2' >
                             <p className='itemfe'>Trang chủ</p>
-                            <p className='itemfe1'>></p>
+                            <p className='itemfe1'>{'>'}</p>
                             <p className='itemfe'>Khoá học</p>
                         </div>
 
@@ -137,7 +206,6 @@ function Frontend() {
                 </div>
 
             </nav>
-
             <div className='fef'>
                 <div className='feleft'>
                     <p className='gia'>Khoảng giá</p>
@@ -147,20 +215,20 @@ function Frontend() {
                     <Input value={moveto} onChange={(e) => setmoveto(e.target.value)} type='text'></Input>
                     <p className='gia'>Hình thức học</p>
                     <p>
-                        <Checkbox className='Checkbox' value={"Online"}>Online</Checkbox>
+                        <Checkbox className='Checkbox' onChange={onchange} >Online</Checkbox>
                     </p>
                     <p>
-                        <Checkbox className='Checkbox' value={"Offine"}>Offine</Checkbox>
+                        <Checkbox className='Checkbox' onChange={onchange1} >Offine</Checkbox>
                     </p>
                     <p className='gia'>Trình độ</p>
                     <p>
-                        <Checkbox>Dễ</Checkbox>
+                        <Checkbox onChange={onchangede}>Dễ</Checkbox>
                     </p>
                     <p>
-                        <Checkbox>Trung bình</Checkbox>
+                        <Checkbox onChange={onchangetrungbinh}>Trung bình</Checkbox>
                     </p>
                     <p>
-                        <Checkbox>Khó</Checkbox>
+                        <Checkbox onChange={onchangekho}>Khó</Checkbox>
                     </p>
                     <p>
                         <Checkbox>Cực khó</Checkbox>
@@ -190,9 +258,9 @@ function Frontend() {
                 <div className='feright'>
                     <div className='selec'>
                         <p className='khoahoc'>{number} khoá học</p>
-                        <Select className='sapxep' defaultValue={{ value: '0', label: 'Sắp xếp khoá học' }}>
+                        <Select className='sapxep' onChange={handleChangeSort} defaultValue={{ value: '0', label: 'Sắp xếp khoá học' }}>
                             <option value="1">Khoá học mới nhất</option>
-                            <option value="2">Khoá học nhiều người học</option>
+                            <option value="2" >Khoá học nhiều người học</option>
                             <option value="3">Khoá học sắp bắt đầu</option>
                             <option value="4">A-Z</option>
                             <option value="5">Z-A</option>
@@ -207,13 +275,14 @@ function Frontend() {
                                     <p className='khoangcach1'>Mentor</p>
                                     <p className='khoangcach'>{item.mentor}</p>
                                 </p>
+                                <p className='detailfe'> <TeamOutlined />{item.songuoihoc} Học viên</p>
                                 <p className='detailfe'>{item.detail}</p>
                                 <p className='mentorfe1'>
                                     <p className='khoangcach2'> {item.price} VNĐ</p>
                                     <i className='khoangcach3'><DatabaseOutlined /> {item.date} Buổi học</i>
                                 </p>
                                 <div className='viewfe4'>
-                                    <Button className='btnfe'>Xem chi tiết</Button>
+                                    <Button className='btnfe' onClick={handlegiohang}>Thêm vào giỏ</Button>
                                 </div>
                             </div>
                         ))}
@@ -271,8 +340,9 @@ const data = [{
     detail: "HTML (hay Hypertext Markup Language) là ngôn ngữ đánh dấu siêu văn bản. Nó hỗ trợ người dùng xây",
     date: 18,
     price: 25000000,
-    hinhthuc: 'Online'
-
+    hinhthuc: 'Online',
+    trinhdo: 'Dễ',
+    songuoihoc: 21
 }, {
     url: 'https://bsmart.edu.vn/files/CourseImage/2-8.jpg',
     title: 'JavaScript',
@@ -280,7 +350,9 @@ const data = [{
     detail: "HTML (hay Hypertext Markup Language) là ngôn ngữ đánh dấu siêu văn bản. Nó hỗ trợ người dùng xây",
     date: 18,
     price: 25000000,
-    hinhthuc: 'Offline'
+    hinhthuc: 'Offline',
+    trinhdo: 'Dễ',
+    songuoihoc: 28
 }, {
     url: 'https://bsmart.edu.vn/files/CourseImage/html-vs-css.png',
     title: 'HTML & CSS_Basic',
@@ -288,7 +360,9 @@ const data = [{
     detail: "HTML (hay Hypertext Markup Language) là ngôn ngữ đánh dấu siêu văn bản. Nó hỗ trợ người dùng xây",
     date: 18,
     price: 30000000,
-    hinhthuc: 'Online'
+    hinhthuc: 'Online',
+    trinhdo: 'Dễ',
+    songuoihoc: 13
 }, {
     url: "https://bsmart.edu.vn/files/CourseImage/html-770x515.jpg",
     title: 'HTML & CSS Foundation',
@@ -296,7 +370,9 @@ const data = [{
     detail: "HTML (hay Hypertext Markup Language) là ngôn ngữ đánh dấu siêu văn bản. Nó hỗ trợ người dùng xây",
     date: 18,
     price: 30000000,
-    hinhthuc: 'Offline'
+    hinhthuc: 'Offline',
+    trinhdo: 'Khó',
+    songuoihoc: 16
 }, {
     url: 'https://bsmart.edu.vn/files/CourseImage/reactjs.png',
     title: 'ReactJS',
@@ -304,7 +380,8 @@ const data = [{
     detail: "HTML (hay Hypertext Markup Language) là ngôn ngữ đánh dấu siêu văn bản. Nó hỗ trợ người dùng xây",
     date: 18,
     price: 27000000,
-    hinhthuc: 'Online'
+    hinhthuc: 'Online',
+    songuoihoc: 18
 }, {
     url: 'https://bsmart.edu.vn/files/CourseImage/2-8.jpg',
     title: 'JavaScript_Basic',
@@ -312,7 +389,8 @@ const data = [{
     detail: "HTML (hay Hypertext Markup Language) là ngôn ngữ đánh dấu siêu văn bản. Nó hỗ trợ người dùng xây",
     date: 18,
     price: 30000000,
-    hinhthuc: 'Online'
+    hinhthuc: 'Online',
+    songuoihoc: 30
 }, {
     url: 'https://image.vtc.vn/resize/th/upload/2021/12/20/1154-12344056.jpg',
     title: 'ReactJS Fundamental',
@@ -320,7 +398,9 @@ const data = [{
     detail: "HTML (hay Hypertext Markup Language) là ngôn ngữ đánh dấu siêu văn bản. Nó hỗ trợ người dùng xây",
     date: 18,
     price: 27000000,
-    hinhthuc: 'Offline'
+    hinhthuc: 'Offline',
+    trinhdo: 'Trung bình',
+    songuoihoc: 22
 }, {
     url: 'https://bsmart.edu.vn/files/CourseImage/2-8.jpg',
     title: 'JavaScript_Basic',
@@ -328,6 +408,8 @@ const data = [{
     detail: "HTML (hay Hypertext Markup Language) là ngôn ngữ đánh dấu siêu văn bản. Nó hỗ trợ người dùng xây",
     date: 18,
     price: 30000000,
-    hinhthuc: 'Offline'
+    hinhthuc: 'Offline',
+    trinhdo: 'Trung bình',
+    songuoihoc: 16
 }
 ];

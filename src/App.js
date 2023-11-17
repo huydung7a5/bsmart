@@ -4,6 +4,7 @@ import Index from './Components/Index/Index';
 import { BrowserRouter as Router, Route, Navigate, Outlet, Routes, BrowserRouter } from 'react-router-dom';
 import Frontend from './Components/FrontEnd/Frontend';
 import BackEnd from './Components/BackEnd/BackEnd';
+import Test from './Components/Index/Test';
 import React from 'react'
 function App() {
   return (
