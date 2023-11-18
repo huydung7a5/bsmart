@@ -14,26 +14,41 @@ import location from '../../assets/images/icon-location.png';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { Button, Input, Anchor } from "antd";
+import { Button, Input, Anchor, Select } from "antd";
 import "./Index1.css";
 import React, { useState, useRef, useEffect } from 'react';
 
 function Index() {
     const [seconds, setSeconds] = useState(4);
-    window.addEventListener('scroll', function () {
-        var header = document.querySelector('header');
-        var headerTop = document.querySelector('.headerindextop');
-        var headerBottom = document.querySelector('.headerindexbottom');
+    const [toggle, settoggle] = useState(false);
+    // Get the header element
+    const header = document.querySelector('.headerindextop');
+    const header1 = document.querySelector('.headerindexbottom');
+    let lastScrollPosition = window.scrollY;
 
-        if (window.pageYOffset > headerTop.offsetHeight) {
-            headerTop.style.display = 'none';
-            headerBottom.style.marginTop = '0';
-        } else {
-            headerTop.style.display = 'block';
-            headerBottom.style.marginTop = headerTop.offsetHeight + '0';
+    // Function to handle scroll events
+    function handleScroll() {
+        try {
+            const currentScrollPosition = window.scrollY;
+            // Check the scroll direction
+            if (currentScrollPosition > lastScrollPosition) {
+                // Scrolling down
+                header.classList.add('hidden-header');
+                header.classList.remove('visible-header');
+            } else {
+                // Scrolling up
+                header.classList.remove('hidden-header');
+                header.classList.add('visible-header');
+
+            }
+            // Update the last scroll position
+            lastScrollPosition = currentScrollPosition;
+        } catch {
+
         }
+    }
 
-    });
+    window.addEventListener('scroll', handleScroll);
     const sliderRef = useRef(null);
     const sliderRef1 = useRef(null);
     const sliderRef2 = useRef(null);
@@ -48,12 +63,26 @@ function Index() {
         }
         return () => clearInterval(interval);
     }, [seconds]);
-    // Slick settings
+    function calculateSlidesToShow() {
+        const screenWidth = window.innerWidth;
+
+        if (screenWidth >= 1000) {
+            return 4;
+        } else if (screenWidth >= 800) {
+            return 2;
+        } else if (screenWidth <= 800) {
+            return 1;
+        }
+    }
+
+    // Số lượng slidesToShow ban đầu
+    let initialSlidesToShow = calculateSlidesToShow();
     const settings = {
+
         dots: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 4,
+        slidesToShow: initialSlidesToShow,
         slidesToScroll: 1,
         responsive: [
             {
@@ -102,9 +131,16 @@ function Index() {
     const handleclick = () => {
         window.location.href = "/frontend";
     }
+
+
+    const handletoggle = () => {
+        settoggle(!toggle);
+    };
+
+
     return (
         <body>
-            <header >
+            <header>
                 <div className="headerindextop">
                     <div className='headericonleft'>
                         <div className='headericon1'>
@@ -127,7 +163,6 @@ function Index() {
                                 <img className='icon' src={phone} alt="" />
                                 <p>  028 9999 79 39</p>
                             </div>
-
                         </div>
                         <div className='headericonright'>
                             <Input className='input' type="text" placeholder='Tìm kiếm khoá học' />
@@ -141,11 +176,8 @@ function Index() {
                                 <div className='login'>
                                     <p>Đăng ký </p>
                                 </div>
-
                             </div>
-
                         </div>
-
                     </div>
                 </div>
                 <div className='headerindexbottom'>
@@ -174,6 +206,31 @@ function Index() {
                     <div className='soping'>
                         <img className='shopingcard' src={shoping} alt="" />
                         <p className='so'>0</p>
+                    </div>
+
+                    <label className="mobile-menu-icon" onClick={handletoggle}>
+                        ☰
+                    </label>
+                    {/* Phần menu di động */}
+                    <div class="mobile-menu" style={{ display: toggle ? 'block' : 'none' }}>
+                        <ul className='toggle'>
+                            <div className='toggleindex'>
+                                <img className='shopingcard1' src={'https://bsmart.edu.vn/files/icon-logo-mobile.webp'} alt="" />
+                                <h1 className='shopingcard1' onClick={handletoggle}>x</h1>
+                            </div>
+                            <div>
+                                <img className='shopingcard' src={shoping} alt="" />
+                            </div>
+                            <div style={{margin:10}}>
+                                <li className='menu3'>Trang chủ</li>
+                                <li className='menu3'>Về chúng tôi</li>
+                                <li className='menu3'>Khoá Học</li>
+                                <li className='menu3'>Khoá học STEM</li>
+                                <li className='menu3'>Mentor</li>
+                                <li className='menu3'>Blog</li>
+                               <Input className='input' type="text" placeholder='Tìm kiếm khoá học' />
+                            </div>
+                        </ul>
                     </div>
                 </div>
             </header>
@@ -300,40 +357,38 @@ function Index() {
                 </div>
             </footer>
             <aside>
-                <div>
-                    <div className='title'>
-                        <h1>Khoá học tiêu biểu</h1>
-                    </div>
-                    <div className='viewtitlefe'>
-                        <h5 className='btn' onClick={goToPrevSlide}>{'<'}</h5>
-                        <div className='slider'>
-                            <Slider ref={sliderRef} {...settings}>
-                                {data.map((item, index) => (
-                                    <div key={index} >
-                                        <div className='feindex'>
-                                            <img className='imgfe' src={item.url} alt="" />
-                                            <h3 className='titlefe'>{item.title}</h3>
-                                            <p className='mentorfe'>
-                                                <p className='khoangcach1'>Mentor</p>
-                                                <p className='khoangcach'>{item.mentor}</p>
-                                            </p>
-                                            <p className='detailfe'> <TeamOutlined />{item.songuoihoc} Học viên</p>
-                                            <p className='detailfe'>{item.detail}</p>
-                                            <p className='mentorfe1'>
-                                                <p className='khoangcach2'> {item.price} VNĐ</p>
-                                                <i className='khoangcach3'><DatabaseOutlined /> {item.date} Buổi học</i>
-                                            </p>
-                                            <div className='viewfe4'>
-                                                <Button className='btnfe'>Xem chi tiết</Button>
-                                            </div>
+                <div className='title'>
+                    <h1>Khoá học tiêu biểu</h1>
+                </div>
+                <div className='viewtitlefe'>
+                    <h5 className='btn' onClick={goToPrevSlide1}>{'<'}</h5>
+                    <div className='slider'>
+                        <Slider ref={sliderRef1} {...settings}>
+                            {data.map((item, index) => (
+                                <div key={index} >
+                                    <div className='feindex'>
+                                        <img className='imgfe' src={item.url} alt="" />
+                                        <h3 className='titlefe'>{item.title}</h3>
+                                        <p className='mentorfe'>
+                                            <p className='khoangcach1'>Mentor</p>
+                                            <p className='khoangcach'>{item.mentor}</p>
+                                        </p>
+                                        <p className='detailfe'> <TeamOutlined />{item.songuoihoc} Học viên</p>
+                                        <p className='detailfe'>{item.detail}</p>
+                                        <p className='mentorfe1'>
+                                            <p className='khoangcach2'> {item.price} VNĐ</p>
+                                            <i className='khoangcach3'><DatabaseOutlined /> {item.date} Buổi học</i>
+                                        </p>
+                                        <div className='viewfe4'>
+                                            <Button className='btnfe'>Xem chi tiết</Button>
                                         </div>
-
                                     </div>
-                                ))}
-                            </Slider>
-                        </div>
-                        <h5 className='btn' onClick={goToNextSlide}>{'>'}</h5>
+
+                                </div>
+                            ))}
+                        </Slider>
                     </div>
+                    <h5 className='btn' onClick={goToNextSlide1}>{'>'}</h5>
                 </div>
                 <div className='title'>
                     <h1>Khoá học cấp tốc</h1>

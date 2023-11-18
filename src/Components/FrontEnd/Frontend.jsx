@@ -20,18 +20,33 @@ function Frontend() {
     const [Data, setData] = useState(data);
     const [giohang, setgiohang] = useState(0);
     const [selectedSortOption, setSelectedSortOption] = useState('2');
-    window.addEventListener('scroll', function () {
-        var header = document.querySelector('header');
-        var headerTop = document.querySelector('.headerindextop');
-        var headerBottom = document.querySelector('.headerindexbottom');
-        if (window.pageYOffset > headerTop.offsetHeight) {
-            headerTop.style.display = 'none';
-            headerBottom.style.marginTop = '0';
-        } else {
-            headerTop.style.display = 'block';
-            headerBottom.style.marginTop = headerTop.offsetHeight + '0';
+    const header = document.querySelector('.headerindextop');
+    let lastScrollPosition = window.scrollY;
+
+    // Function to handle scroll events
+    function handleScroll() {
+        try {
+            const currentScrollPosition = window.scrollY;
+            // Check the scroll direction
+            if (currentScrollPosition > lastScrollPosition) {
+                // Scrolling down
+                header.classList.add('hidden-header');
+                header.classList.remove('visible-header');
+            } else {
+                // Scrolling up
+                header.classList.remove('hidden-header');
+                header.classList.add('visible-header');
+
+            }
+            // Update the last scroll position
+            lastScrollPosition = currentScrollPosition;
+        } catch {
+
         }
-    });
+    }
+
+
+    window.addEventListener('scroll', handleScroll);
     const handlegiohang = () => {
         alert('Thêm vào giỏ hàng thành công');
         setgiohang(giohang + 1);
@@ -193,6 +208,39 @@ function Frontend() {
                     <div className='soping'>
                         <img className='shopingcard' src={shoping} alt="" />
                         <p className='so'>{giohang}</p>
+                    </div>
+
+
+                    {/* Thêm checkbox và icon cho menu di động */}
+                    <input type="checkbox" id="mobileMenuToggle" class="mobile-menu-toggle" />
+                    <label for="mobileMenuToggle" class="mobile-menu-icon">☰</label>
+
+                    {/* Phần menu di động */}
+                    <div class="mobile-menu">
+                        {/* Thêm các mục menu di động của bạn ở đây */}
+                        <ul>
+                            <li className='menu2'>
+                                <Link className='link' onClick={handleindex}>
+                                    Trang chủ</Link>
+                            </li>
+                            <li>Về chúng tôi</li>
+                            <li>Khoá học STEM</li>
+                            <li>Khoá Học
+                                <ul>
+                                    <li>
+                                        <Link onClick={handlereload}>
+                                            Frontend</Link>
+                                    </li>
+                                    <li>Back-End</li>
+                                    <li>Database</li>
+                                    <li>Cấp tốc</li>
+                                    <li>Other</li>
+                                    <li>System</li>
+                                </ul>
+                            </li>
+                            <li>Mentor</li>
+                            <li>Blog</li>
+                        </ul>
                     </div>
                 </div>
             </header>

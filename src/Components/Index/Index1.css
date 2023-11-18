@@ -130,8 +130,8 @@ h5 {
 
 .logo {
     margin-left: 5%;
-    width: 15%;
-    height: 60%;
+    width: 200px;
+    height: 70px;
 }
 
 .shopingcard {
@@ -176,12 +176,14 @@ p {
 .headerindexbottom {
     width: 100%;
     background-color: white;
-    position: fixed;
+    position: absolute;
     height: 6em;
     align-items: center;
     display: flex;
     box-shadow: 0px 0px 10px 0px rgba(124, 117, 117, 0.75);
     z-index: 1;
+    transform: translateY(0);
+    transition: transform 0.3s ease-in-out;
 }
 
 .so {
@@ -264,8 +266,6 @@ nav {
     justify-content: center;
     flex-direction: row;
     display: flex;
-
-
 }
 
 .viewleft {
@@ -454,10 +454,7 @@ h4 {
     font-size: 17px;
 }
 
-.title1:hover {
-    box-shadow: 0px 0px 15px 0px rgba(32, 31, 31, 0.75);
-    filter: grayscale(0%);
-}
+
 
 .title3 {
     width: 100%;
@@ -467,7 +464,6 @@ h4 {
     background-image: url(../../assets/images/banner.png);
     background-size: cover;
     background-repeat: no-repeat;
-    clip-path: polygon(0 0, 100% 15%, 100% 100%, 0% 100%);
     padding: 110px 0;
     position: relative;
     overflow: hidden;
@@ -548,9 +544,23 @@ h4 {
 
 .title2:hover::before {
     background-color: rgba(124, 122, 122, 0.2);
+
+}
+
+.title1:before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .title2::before {
+    border-radius: 15px;
     position: absolute;
     content: "";
     top: 0;
@@ -576,7 +586,7 @@ h4 {
 }
 
 .doingu {
-    font-size: 13px;
+    font-size: 14px;
     word-wrap: break-word;
     width: 70%;
     color: #ffffff;
@@ -692,7 +702,7 @@ aside {
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
-    
+
 }
 
 .view1 {
@@ -729,7 +739,7 @@ aside {
     color: white;
     text-align: left;
     font-size: 13px;
-    
+
 }
 
 .index2 {
@@ -960,7 +970,7 @@ aside {
 
 
 .viewtitlefe {
-    width: 1100px;
+    width: 90%;
     height: auto;
     align-items: center;
     display: flex;
@@ -987,6 +997,19 @@ aside {
 
 .btn:hover {
     color: #ff630e;
+}
+
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    /* hoặc màu nền mong muốn */
+    z-index: 1000;
+    /* để đảm bảo nó hiển thị trên tất cả các phần khác */
 }
 
 .detailfe1 {
@@ -1044,4 +1067,269 @@ aside {
     justify-content: center;
     height: auto;
     border-top: 0.05px solid rgb(73, 72, 72);
+}
+
+.headerindextop.hidden-headerindextop {
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+
+
+
+
+.mobile-menu-toggle {
+    display: none;
+    cursor: pointer;
+}
+
+.mobile-menu-icon {
+    display: none;
+    cursor: pointer;
+
+}
+
+@media screen and (max-width: 768px) {
+    .mobile-menu.open {
+        display: block;
+    }
+
+    .mobile-menu-icon {
+        display: block;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 25px;
+    }
+
+    .mobile-menu-icon:hover {
+        color: #ff630e;
+    }
+
+    .headerindextop {
+        display: none;
+    }
+
+    .soping {
+        display: none;
+    }
+
+    .headericonleft,
+    .headericon2,
+    .headericonright {
+        width: 100%;
+    }
+
+    .headericonright {
+        margin-top: 10px;
+        /* Thêm khoảng cách giữa thanh tìm kiếm và phần đăng nhập */
+    }
+
+    .menu {
+        display: none;
+        /* Ẩn menu chính */
+    }
+
+    .headerindexbottom {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    /* Hiển thị nút chuyển đổi menu di động */
+
+    /* Kiểu dáng menu di động */
+    .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        /* hoặc màu nền mong muốn */
+        z-index: 1000;
+        /* để đảm bảo nó hiển thị trên tất cả các phần khác */
+    }
+
+    /* Hiển thị menu di động khi nút chuyển đổi được nhấp */
+    .mobile-menu-toggle:checked+.mobile-menu {
+        display: block;
+    }
+
+    .mobile-menu ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .mobile-menu li {
+        margin: 10px 0;
+    }
+
+    .trothanh {
+        font-size: 38px;
+        font-weight: 700;
+        word-wrap: break-word;
+        margin: 0px 0px 20px;
+        line-height: 50px;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .doingu {
+        font-size: 14px;
+        word-wrap: break-word;
+        width: 100%;
+        color: #ffffff;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .titleme {
+        width: 100%;
+        height: auto;
+        text-align: start;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        display: flex;
+    }
+
+    .viewleft {
+        width: 95%;
+        justify-content: space-between;
+        z-index: 0;
+    }
+
+    .banner2 {
+        border-radius: 10px;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        box-shadow: 0px 0px 15px 0px rgba(32, 31, 31, 0.75);
+    }
+
+    .viewitemtop {
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .item {
+        width: 90%;
+        margin: 15px;
+    }
+
+    .title1 {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+
+        border-radius: 15px;
+        width: 90%;
+        height: auto;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        background-image: url(../../assets/images/banner-3.png);
+
+    }
+
+    .title2 {
+        margin-top: 1.5%;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        border-radius: 15px;
+        width: 90%;
+        height: auto;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        background-image: url(../../assets/images/banner-4.png);
+    }
+
+    .viewtitlefe {
+        max-width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .btn {
+        display: none;
+    }
+
+    .slider1 {
+        width: 50%;
+        padding-bottom: 50px;
+    }
+
+    .slider {
+        width: 95%;
+        padding-bottom: 50px;
+    }
+
+    .bottom {
+        background-color: #0e0a38;
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex-wrap: wrap;
+
+    }
+
+    .view1 {
+        width: 95%;
+        height: auto;
+        flex-direction: column;
+    }
+
+    .view2 {
+        width: 95%;
+        height: auto;
+        flex-direction: column;
+    }
+
+    .view3 {
+        width: 95%;
+        height: auto;
+        flex-direction: column;
+    }
+
+    .toggle {
+        background-color: #ffffff;
+        width: 60%;
+        float: right;
+       
+    }
+
+    .toggleindex {
+        background-color: #ffffff;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .shopingcard1 {
+        width: 48%;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        font-size: 45px;
+    }
+
+   .menu3 {
+        width:90%;
+        height: auto;
+        font-size: 18px;
+        font-weight: 500;
+        padding-top: 5px;
+        border-bottom: 0.1px solid #ebebeb;
+
+    }
+  
 }
