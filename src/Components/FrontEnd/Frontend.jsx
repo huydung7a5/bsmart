@@ -1,17 +1,12 @@
-import { FacebookOutlined, YoutubeOutlined, CheckCircleOutlined, SettingOutlined, DatabaseOutlined, FireOutlined, TeamOutlined, QrcodeOutlined, TrophyOutlined } from '@ant-design/icons';
+import { FacebookOutlined, YoutubeOutlined, RightOutlined, ArrowDownOutlined, CheckCircleOutlined, SettingOutlined, DatabaseOutlined, FireOutlined, TeamOutlined, QrcodeOutlined, TrophyOutlined } from '@ant-design/icons';
 import { BrowserRouter as Router, Route, Navigate, Outlet, Routes, Link } from 'react-router-dom';
 import gmail from '../../assets/images/icon-gmail.png';
 import phone from '../../assets/images/icon-phone.png';
 import logo from '../../assets/images/icon-logo.png';
 import shoping from '../../assets/images/icon-shopping-cart.png';
-import banner from '../../assets/images/banner.png';
-import background from '../../assets/images/background.png';
-import banner2 from '../../assets/images/banner-2.png';
-import banner3 from '../../assets/images/banner-3.png';
-import banner4 from '../../assets/images/banner-4.png';
-import bannerfooter from '../../assets/images/icon-logo-footer.png';
-import { Button, Input, Checkbox, Select, Alert } from "antd";
-
+import { Button, Input, Checkbox, Select, Space } from "antd";
+import { data } from '../Database/Data';
+import Bottom from '../Index/Bottom';
 import { useEffect, useState } from 'react';
 function Frontend() {
     const [number, setnumber] = useState(0);
@@ -19,11 +14,13 @@ function Frontend() {
     const [moveto, setmoveto] = useState("");
     const [Data, setData] = useState(data);
     const [giohang, setgiohang] = useState(0);
-    const [selectedSortOption, setSelectedSortOption] = useState('2');
+    const [selectedSortOption, setSelectedSortOption] = useState('');
     const header = document.querySelector('.headerindextop');
+    const [isPriceRangeVisible, setIsPriceRangeVisible] = useState(false);
+    const [isFormVisible, setIsFormVisible] = useState(false);
+    const [isLevelVisible, setIsLevelVisible] = useState(false);
+    const [isfieldVisible, issetFieldVisible] = useState(false);
     let lastScrollPosition = window.scrollY;
-
-    // Function to handle scroll events
     function handleScroll() {
         try {
             const currentScrollPosition = window.scrollY;
@@ -41,11 +38,20 @@ function Frontend() {
             // Update the last scroll position
             lastScrollPosition = currentScrollPosition;
         } catch {
-
         }
     }
-
-
+    const handleprice = () => {
+        setIsPriceRangeVisible(!isPriceRangeVisible);
+    }
+    const handleform = () => {
+        setIsFormVisible(!isFormVisible);
+    }
+    const handlelevel = () => {
+        setIsLevelVisible(!isLevelVisible);
+    }
+    const handlefield = () => {
+        issetFieldVisible(!isfieldVisible);
+    }
     window.addEventListener('scroll', handleScroll);
     const handlegiohang = () => {
         alert('Thêm vào giỏ hàng thành công');
@@ -65,7 +71,6 @@ function Frontend() {
         const interval = setInterval(() => {
             setnumber(data.length);
         });
-
         return () => clearInterval(interval);
     }, [number]);
     const onchange = (e) => {
@@ -75,7 +80,6 @@ function Frontend() {
         } else {
             setData(data);
         }
-
     }
     const onchange1 = (e) => {
         if (e.target.checked) {
@@ -84,7 +88,6 @@ function Frontend() {
         } else {
             setData(data);
         }
-
     }
     const onchangekho = (e) => {
         if (e.target.checked) {
@@ -93,7 +96,6 @@ function Frontend() {
         } else {
             setData(data);
         }
-
     }
     const onchangede = (e) => {
         if (e.target.checked) {
@@ -102,7 +104,6 @@ function Frontend() {
         } else {
             setData(data);
         }
-
     }
     const onchangetrungbinh = (e) => {
         if (e.target.checked) {
@@ -111,7 +112,6 @@ function Frontend() {
         } else {
             setData(data);
         }
-
     }
     const handleChangeSort = (value) => {
         // Cập nhật giá trị đã chọn vào state
@@ -133,6 +133,9 @@ function Frontend() {
             setData(data);
         }
     };
+    const handlechitiet = () => {
+        window.location.href = "/detail";
+    }
     return (
         <body>
             <header >
@@ -158,10 +161,9 @@ function Frontend() {
                                 <img className='icon' src={phone} alt="" />
                                 <p>  028 9999 79 39</p>
                             </div>
-
                         </div>
                         <div className='headericonright'>
-                            <Input className='input' type="text" placeholder='Tìm kiếm khoá học' />
+                                <Input className='input' type="text" placeholder='Tìm kiếm khoá học'/>
                             <div className='viewlogin'>
                                 <div className='login'>
                                     <p>Đăng nhập</p>
@@ -172,11 +174,8 @@ function Frontend() {
                                 <div className='login'>
                                     <p>Đăng ký </p>
                                 </div>
-
                             </div>
-
                         </div>
-
                     </div>
                 </div>
                 <div className='headerindexbottom'>
@@ -191,7 +190,7 @@ function Frontend() {
                         <li className='menu1' style={{ color: '#ff630e' }}>Khoá Học
                             <ul className='submenu'>
                                 <li className='submenu1'>
-                                    <Link className='link' onClick={handlereload} >
+                                    <Link className='link' onClick={handlereload}>
                                         Frontend</Link>
                                 </li>
                                 <li className='submenu1'>
@@ -214,7 +213,6 @@ function Frontend() {
                     {/* Thêm checkbox và icon cho menu di động */}
                     <input type="checkbox" id="mobileMenuToggle" class="mobile-menu-toggle" />
                     <label for="mobileMenuToggle" class="mobile-menu-icon">☰</label>
-
                     {/* Phần menu di động */}
                     <div class="mobile-menu">
                         {/* Thêm các mục menu di động của bạn ở đây */}
@@ -248,15 +246,14 @@ function Frontend() {
                 <div className='fetitle3'>
                     <div className='viewtitle1'>
                         <h1 className='viewfetitle1'>Danh sách khoá học</h1>
-                        <div className='index2' >
-                            <p className='itemfe'>Trang chủ</p>
-                            <p className='itemfe1'>{'>'}</p>
+                        <div className='index2'>
+                            <p className='itemfe1'>Trang chủ</p>
+                            <p><RightOutlined  /></p>
                             <p className='itemfe'>Khoá học</p>
                         </div>
 
                     </div>
                 </div>
-
             </nav>
             <div className='fef'>
                 <div className='feleft'>
@@ -305,7 +302,78 @@ function Frontend() {
                         <Checkbox className='Checkbox'>System</Checkbox>
                     </p>
                     <Button className='btntimkiem' onClick={handlekhoanggia}>Tìm kiếm</Button>
-
+                </div>
+                <div className='feleftmobile'>
+                    <div className='khoangcah4'>
+                        <h3 className='arr1' onClick={handleprice}><ArrowDownOutlined className='arr' /> KHOẢNG GIÁ
+                        </h3>
+                        {isPriceRangeVisible && (
+                            <div>
+                                <p>Từ giá</p>
+                                <Input value={to} onChange={(e) => setto(e.target.value)} type='text'></Input>
+                                <p>Đến giá</p>
+                                <Input value={moveto} onChange={(e) => setmoveto(e.target.value)} type='text'></Input>
+                            </div>
+                        )}
+                    </div>
+                    <div className='khoangcah4'>
+                        <h3 className='arr1' onClick={handleform}><ArrowDownOutlined className='arr' /> HÌNH THỨC HỌC</h3>
+                        {isFormVisible && (
+                            <div>
+                                <p>
+                                    <Checkbox className='Checkbox' onChange={onchange} >Online</Checkbox>
+                                </p>
+                                <p>
+                                    <Checkbox className='Checkbox' onChange={onchange1} >Offine</Checkbox>
+                                </p>
+                            </div>
+                        )}
+                    </div>
+                    <div className='khoangcah4'>
+                        <h3 className='arr1' onClick={handlelevel}><ArrowDownOutlined className='arr' /> TRÌNH ĐỘ</h3>
+                        {isLevelVisible && (
+                            <div>
+                                <p>
+                                    <Checkbox onChange={onchangede}>Dễ</Checkbox>
+                                </p>
+                                <p>
+                                    <Checkbox onChange={onchangetrungbinh}>Trung bình</Checkbox>
+                                </p>
+                                <p>
+                                    <Checkbox onChange={onchangekho}>Khó</Checkbox>
+                                </p>
+                                <p>
+                                    <Checkbox>Cực khó</Checkbox>
+                                </p>
+                            </div>
+                        )}
+                    </div>
+                    <div className='khoangcah4'>
+                        <h3 className='arr1' onClick={handlefield}><ArrowDownOutlined className='arr' /> LĨNH VỰC</h3>
+                        {isfieldVisible && (
+                            <div>
+                                <p>
+                                    <Checkbox className='Checkbox'>Back-End</Checkbox>
+                                </p>
+                                <p>
+                                    <Checkbox className='Checkbox'>Front-End</Checkbox>
+                                </p>
+                                <p>
+                                    <Checkbox className='Checkbox'>Database</Checkbox>
+                                </p>
+                                <p>
+                                    <Checkbox className='Checkbox'>Cấp tốc</Checkbox>
+                                </p>
+                                <p>
+                                    <Checkbox className='Checkbox'>Other</Checkbox>
+                                </p>
+                                <p>
+                                    <Checkbox className='Checkbox'>System</Checkbox>
+                                </p>
+                            </div>
+                        )}
+                    </div>
+                    <Button className='btntimkiem' onClick={handlekhoanggia}>Tìm kiếm</Button>
                 </div>
                 <div className='feright'>
                     <div className='selec'>
@@ -318,7 +386,7 @@ function Frontend() {
                             <option value="5">Z-A</option>
                         </Select>
                     </div>
-                    <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+                    <div className='itemfe2'>
                         {Data.map((item, index) => (
                             <div key={index} className='fe1'>
                                 <img className='imgfe' src={item.url} alt="" />
@@ -334,7 +402,7 @@ function Frontend() {
                                     <i className='khoangcach3'><DatabaseOutlined /> {item.date} Buổi học</i>
                                 </p>
                                 <div className='viewfe4'>
-                                    <Button className='btnfe' onClick={handlegiohang}>Thêm vào giỏ</Button>
+                                    <Button className='btnfe' onClick={handlechitiet}>Xem chi tiết</Button>
                                 </div>
                             </div>
                         ))}
@@ -342,128 +410,9 @@ function Frontend() {
 
                 </div>
             </div>
-            <div className='bottom'>
-                <div className='view1'>
-                    <img className='bannerf' src={bannerfooter} />
-                    <p className='doingu1'> Chúng tôi cung cấp các khoá học chất lượng cao để cải thiện các kỹ năng lập trình của bạn. Tất cả các mentor của chúng tôi đều có nhiều kinh nghiệm trong thực tế và giảng dạy.</p>
-                    <p className='doingu2'> Theo dõi chúng tôi tại:</p>
-                    <p className='doingu2'><FacebookOutlined />
-                        in <YoutubeOutlined /></p>
-                </div>
-                <div className='view2'>
-                    <p className='txtcheck' >Menu</p>
-                    <p className='doingu'> Trang chủ</p>
-                    <p className='doingu'> Về Chúng tôi</p>
-                    <p className='doingu'> Nền tảng LMS</p>
-                    <p className='doingu'> Khoá học STEM</p>
-                    <p className='doingu'> Khoá học</p>
-                    <p className='doingu'> Mentor</p>
-                    <p className='doingu'> Blog</p>
-                </div>
-                <div className='view3'>
-                    <p className='txtcheck' >Điều Khoản</p>
-                    <p className='doingu'> Chính sách bảo mật</p>
-                    <p className='doingu'> Điều khoản dịch vụ</p>
-                    <p className='txtcheck' >Cộng tác viên</p>
-                    <p className='doingu'> Đăng ký cộng tác viên</p>
-                    <p className='doingu'>Đăng ký Mentor</p>
-                </div>
-                <div className='view1'>
-                    <p className='txtcheck' >Liên hệ với chúng tôi</p>
-                    <p className='doingu'>Tòa S9.02A, Vinhomes Grand Park, TP.Thủ Đức</p>
-                    <div className='viewf'>
-                        <img className='iconf' src={gmail} alt="" />
-                        admin@bsmart.edu.vn</div>
-                    <div className='viewf'>
-                        <img className='iconf' src={phone} alt="" />
-                        028 9999 79 39</div>
-                </div>
-                <p className='banquyen'>© Bản quyền BSmart 2023 - Empowered by BSmart - version 1.1.13</p>
-            </div>
-
+            <Bottom />
         </body>
     );
 }
-
-
 export default Frontend;
-const data = [{
-    url: "https://bsmart.edu.vn/files/CourseImage/html-770x515.jpg",
-    title: 'HTML & CSS',
-    mentor: 'Đỗ Minh Quân',
-    detail: "HTML (hay Hypertext Markup Language) là ngôn ngữ đánh dấu siêu văn bản. Nó hỗ trợ người dùng xây",
-    date: 18,
-    price: 25000000,
-    hinhthuc: 'Online',
-    trinhdo: 'Dễ',
-    songuoihoc: 21
-}, {
-    url: 'https://bsmart.edu.vn/files/CourseImage/2-8.jpg',
-    title: 'JavaScript',
-    mentor: 'Đoàn Ngọc Trân Châu',
-    detail: "HTML (hay Hypertext Markup Language) là ngôn ngữ đánh dấu siêu văn bản. Nó hỗ trợ người dùng xây",
-    date: 18,
-    price: 25000000,
-    hinhthuc: 'Offline',
-    trinhdo: 'Dễ',
-    songuoihoc: 28
-}, {
-    url: 'https://bsmart.edu.vn/files/CourseImage/html-vs-css.png',
-    title: 'HTML & CSS_Basic',
-    mentor: 'Hồ Hồng Minh',
-    detail: "HTML (hay Hypertext Markup Language) là ngôn ngữ đánh dấu siêu văn bản. Nó hỗ trợ người dùng xây",
-    date: 18,
-    price: 30000000,
-    hinhthuc: 'Online',
-    trinhdo: 'Dễ',
-    songuoihoc: 13
-}, {
-    url: "https://bsmart.edu.vn/files/CourseImage/html-770x515.jpg",
-    title: 'HTML & CSS Foundation',
-    mentor: 'Đỗ Minh Quân',
-    detail: "HTML (hay Hypertext Markup Language) là ngôn ngữ đánh dấu siêu văn bản. Nó hỗ trợ người dùng xây",
-    date: 18,
-    price: 30000000,
-    hinhthuc: 'Offline',
-    trinhdo: 'Khó',
-    songuoihoc: 16
-}, {
-    url: 'https://bsmart.edu.vn/files/CourseImage/reactjs.png',
-    title: 'ReactJS',
-    mentor: 'Nguyễn Viết Châu',
-    detail: "HTML (hay Hypertext Markup Language) là ngôn ngữ đánh dấu siêu văn bản. Nó hỗ trợ người dùng xây",
-    date: 18,
-    price: 27000000,
-    hinhthuc: 'Online',
-    songuoihoc: 18
-}, {
-    url: 'https://bsmart.edu.vn/files/CourseImage/2-8.jpg',
-    title: 'JavaScript_Basic',
-    mentor: 'Nguyễn Thị Trà My',
-    detail: "HTML (hay Hypertext Markup Language) là ngôn ngữ đánh dấu siêu văn bản. Nó hỗ trợ người dùng xây",
-    date: 18,
-    price: 30000000,
-    hinhthuc: 'Online',
-    songuoihoc: 30
-}, {
-    url: 'https://image.vtc.vn/resize/th/upload/2021/12/20/1154-12344056.jpg',
-    title: 'ReactJS Fundamental',
-    mentor: 'Đỗ Minh Quân',
-    detail: "HTML (hay Hypertext Markup Language) là ngôn ngữ đánh dấu siêu văn bản. Nó hỗ trợ người dùng xây",
-    date: 18,
-    price: 27000000,
-    hinhthuc: 'Offline',
-    trinhdo: 'Trung bình',
-    songuoihoc: 22
-}, {
-    url: 'https://bsmart.edu.vn/files/CourseImage/2-8.jpg',
-    title: 'JavaScript_Basic',
-    mentor: 'Hồ Hồng Minh',
-    detail: "HTML (hay Hypertext Markup Language) là ngôn ngữ đánh dấu siêu văn bản. Nó hỗ trợ người dùng xây",
-    date: 18,
-    price: 30000000,
-    hinhthuc: 'Offline',
-    trinhdo: 'Trung bình',
-    songuoihoc: 16
-}
-];
+

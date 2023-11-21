@@ -41,6 +41,7 @@ header {
     width: 60%;
     color: white;
     font-size: 14px;
+    font-family: 'Roboto', sans-serif;
 }
 
 .headericon1 {
@@ -51,7 +52,7 @@ header {
     width: 10%;
     color: white;
     font-size: 12px;
-
+    font-family: 'Roboto', sans-serif;
 }
 
 
@@ -74,7 +75,7 @@ header {
 
 h5 {
     color: white;
-    font-style: times new roman;
+    font-family: 'Roboto', sans-serif;
 }
 
 .icon {
@@ -89,6 +90,7 @@ h5 {
     align-items: center;
     width: 100%;
     font-size: 14px;
+    font-family: 'Roboto', sans-serif;
 }
 
 .input {
@@ -305,7 +307,7 @@ nav {
     width: 100%;
     text-align: justify;
     height: auto;
-
+    font-family: 'Roboto', sans-serif;
 }
 
 h1 {
@@ -332,6 +334,7 @@ h1 {
     padding: 10px;
     text-align: center;
     margin: 5px;
+    font-family: 'Roboto', sans-serif;
 }
 
 .button:hover {
@@ -452,6 +455,7 @@ h4 {
     text-align: justify;
     font-weight: 500;
     font-size: 17px;
+    font-family: 'Roboto', sans-serif;
 }
 
 
@@ -583,16 +587,18 @@ h4 {
     word-wrap: break-word;
     margin: 0px 0px 20px;
     line-height: 77px;
+    font-family: 'Roboto', sans-serif;
 }
 
 .doingu {
-    font-size: 14px;
+    font-size: 16px;
     word-wrap: break-word;
     width: 70%;
     color: #ffffff;
     justify-content: center;
     align-items: center;
     flex-direction: row;
+    font-family: 'Roboto', sans-serif;
 }
 
 .doingu1 {
@@ -601,6 +607,7 @@ h4 {
     width: 100%;
     color: #ffffff;
     text-align: justify;
+    font-family: 'Roboto', sans-serif;
 }
 
 .doingu2 {
@@ -610,6 +617,7 @@ h4 {
     width: 100%;
     color: #ffffff;
     text-align: justify;
+    font-family: 'Roboto', sans-serif;
 
 }
 
@@ -625,7 +633,16 @@ h4 {
     display: flex;
 
 }
+.bottomitem{
+    background-color: #0e0a38;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
 
+}
 .viewtitle2 {
     text-align: center;
     width: 100%;
@@ -725,7 +742,7 @@ aside {
 }
 
 .bannerf {
-    width: 45%;
+    width: 40%;
     height: auto;
     flex-direction: column;
 }
@@ -743,34 +760,46 @@ aside {
 }
 
 .index2 {
+    width: 15%;
+    height: auto;
+    flex-direction: row;
+    justify-content: space-between;
+    display: flex;
+    color: white;
+    text-align: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+}
+.itemfe1:hover {
+    color: #ff630e;
+}
+.itemfe1 {
+    width: 33%;
+    height: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    display: flex;
+    color: white;
+}
+.itemfe {
+    width: 50%;
+    height: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    display: flex;
+    color: white;
+}
+
+.itemfe2 {
     width: 100%;
     height: auto;
     flex-direction: row;
-    justify-content: center;
-    display: flex;
-    color: white;
-    text-align: left;
-    text-align: center;
-}
-
-.itemfe1 {
-    width: 1%;
-    text-align: center;
-    flex-direction: row;
     flex-wrap: wrap;
     display: flex;
-    color: white;
-
 }
 
-.itemfe {
-
-    width: 6%;
-    height: auto;
-    flex-direction: row;
-    flex-wrap: wrap;
-    display: flex;
-    color: white;
+.feleftmobile {
+    display: none;
 }
 
 .viewfetitle1 {
@@ -814,7 +843,6 @@ aside {
     width: 65%;
     height: auto;
     margin-left: 2%;
-
 }
 
 .gia {
@@ -841,15 +869,16 @@ aside {
     height: auto;
     background-color: #ff630e;
     color: white;
-    font-size: 15px;
-    font-weight: 600;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 5px;
+    font-family: 'Roboto', sans-serif;
 }
 
 .khoahoc {
     width: 20%;
     font-size: 15px;
     font-weight: 600;
-
 }
 
 .selec {
@@ -860,9 +889,8 @@ aside {
 }
 
 .sapxep {
-    width: 30%;
+    width: 35%;
     height: 10%;
-    padding: 5px;
     display: flex;
     flex-direction: row;
 
@@ -887,6 +915,7 @@ aside {
     margin-left: 10px;
     font-size: 14px;
     color: #ff630e;
+    font-family: 'Roboto', sans-serif;
 }
 
 .fe1 {
@@ -936,6 +965,7 @@ aside {
     color: #792b2b;
     font-weight: 600;
     font-size: 16px;
+    font-family: 'Roboto', sans-serif;
 }
 
 .Checkbox {
@@ -951,7 +981,8 @@ aside {
     color: white;
     font-size: 15px;
     font-weight: 600;
-    padding: 10px;
+    padding: 14px;
+    font-family: 'Roboto', sans-serif;
 }
 
 .btnfe:hover {
@@ -993,6 +1024,7 @@ aside {
     color: rgb(167, 167, 167);
     font-size: 40px;
     font-weight: 600;
+    font-family: 'Roboto', sans-serif;
 }
 
 .btn:hover {
@@ -1030,6 +1062,7 @@ aside {
     justify-content: center;
     display: flex;
     flex-direction: row;
+    font-family: 'Roboto', sans-serif;
 }
 
 .dinhhuong {
@@ -1067,6 +1100,7 @@ aside {
     justify-content: center;
     height: auto;
     border-top: 0.05px solid rgb(73, 72, 72);
+    font-family: 'Roboto', sans-serif;
 }
 
 .headerindextop.hidden-headerindextop {
@@ -1074,9 +1108,11 @@ aside {
     transition: transform 0.3s ease-in-out;
 }
 
+.khoangcah4 {
+    margin: -5% 0px 0px 0px;
+    font-family: 'Roboto', sans-serif;
 
-
-
+}
 
 .mobile-menu-toggle {
     display: none;
@@ -1099,6 +1135,7 @@ aside {
         cursor: pointer;
         font-weight: bold;
         font-size: 25px;
+        font-family: 'Roboto', sans-serif;
     }
 
     .mobile-menu-icon:hover {
@@ -1117,6 +1154,23 @@ aside {
     .headericon2,
     .headericonright {
         width: 100%;
+    }
+
+    .feleftmobile {
+        display: block;
+        width: 87%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-bottom: 10px;
+
+    }
+     .arr1{
+        font-size: 17px;
+        font-weight: 700;
+     }
+    .arr:hover {
+        color: #ff630e;
     }
 
     .headericonright {
@@ -1164,6 +1218,15 @@ aside {
         margin: 10px 0;
     }
 
+    .itemfe2 {
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        flex-wrap: wrap;
+        display: flex;
+        justify-content: center;
+    }
+
     .trothanh {
         font-size: 38px;
         font-weight: 700;
@@ -1171,10 +1234,12 @@ aside {
         margin: 0px 0px 20px;
         line-height: 50px;
         font-family: 'Roboto', sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
     .doingu {
-        font-size: 14px;
+        font-family: 'Roboto', sans-serif;
+        font-size: 16px;
         word-wrap: break-word;
         width: 100%;
         color: #ffffff;
@@ -1212,7 +1277,6 @@ aside {
     }
 
     .viewitemtop {
-
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -1225,7 +1289,6 @@ aside {
 
     .title1 {
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-
         border-radius: 15px;
         width: 90%;
         height: auto;
@@ -1277,7 +1340,16 @@ aside {
         flex-direction: column;
         justify-content: center;
         flex-wrap: wrap;
+        align-items: center;
 
+    }
+    .bottomitem{
+        width: 90%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex-wrap: wrap;
     }
 
     .view1 {
@@ -1288,6 +1360,7 @@ aside {
 
     .view2 {
         width: 95%;
+        margin-left: 0;
         height: auto;
         flex-direction: column;
     }
@@ -1302,7 +1375,14 @@ aside {
         background-color: #ffffff;
         width: 60%;
         float: right;
-       
+
+    }
+
+    .toggle1 {
+        background-color: #ffffff;
+        width: 300px;
+        height: 300px;
+
     }
 
     .toggleindex {
@@ -1322,14 +1402,64 @@ aside {
         font-size: 45px;
     }
 
-   .menu3 {
-        width:90%;
+    .menu3 {
+        width: 90%;
         height: auto;
         font-size: 18px;
         font-weight: 500;
         padding-top: 5px;
         border-bottom: 0.1px solid #ebebeb;
+        font-family: 'Roboto', sans-serif;
 
     }
-  
+
+    .input1 {
+        width: 80%;
+        background-color: white;
+        color: white;
+        border: 0.1px solid #9b9898;
+        height: 2.4em;
+    }
+
+    .fef {
+        width: 100%;
+        margin-top: 5%;
+        font-size: 14px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .feright {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .selec {
+        width: 87%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-bottom: 10px;
+
+    }
+
+    .fe1 {
+        flex-direction: row;
+        color: black;
+        justify-content: center;
+        width: 85%;
+        margin: 5px;
+        padding: 5px;
+        border-radius: 5px;
+        padding-bottom: 30px;
+    }
+
+    .feleft {
+        display: none;
+    }
 }
