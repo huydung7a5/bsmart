@@ -133,9 +133,6 @@ function Frontend() {
             setData(data);
         }
     };
-    const handlechitiet = () => {
-        window.location.href = "/detail";
-    }
     return (
         <body>
             <header >
@@ -163,7 +160,7 @@ function Frontend() {
                             </div>
                         </div>
                         <div className='headericonright'>
-                                <Input className='input' type="text" placeholder='Tìm kiếm khoá học'/>
+                            <Input className='input' type="text" placeholder='Tìm kiếm khoá học' />
                             <div className='viewlogin'>
                                 <div className='login'>
                                     <p>Đăng nhập</p>
@@ -248,7 +245,7 @@ function Frontend() {
                         <h1 className='viewfetitle1'>Danh sách khoá học</h1>
                         <div className='index2'>
                             <p className='itemfe1'>Trang chủ</p>
-                            <p><RightOutlined  /></p>
+                            <p><RightOutlined /></p>
                             <p className='itemfe'>Khoá học</p>
                         </div>
 
@@ -257,19 +254,19 @@ function Frontend() {
             </nav>
             <div className='fef'>
                 <div className='feleft'>
-                    <p className='gia'>Khoảng giá</p>
+                    <p className='gia1'>Khoảng giá</p>
                     <p>Từ giá</p>
                     <Input value={to} onChange={(e) => setto(e.target.value)} type='text'></Input>
                     <p>Đến giá</p>
                     <Input value={moveto} onChange={(e) => setmoveto(e.target.value)} type='text'></Input>
-                    <p className='gia'>Hình thức học</p>
+                    <p className='gia1'>Hình thức học</p>
                     <p>
                         <Checkbox className='Checkbox' onChange={onchange} >Online</Checkbox>
                     </p>
                     <p>
                         <Checkbox className='Checkbox' onChange={onchange1} >Offine</Checkbox>
                     </p>
-                    <p className='gia'>Trình độ</p>
+                    <p className='gia1'>Trình độ</p>
                     <p>
                         <Checkbox onChange={onchangede}>Dễ</Checkbox>
                     </p>
@@ -282,7 +279,7 @@ function Frontend() {
                     <p>
                         <Checkbox>Cực khó</Checkbox>
                     </p>
-                    <p className='gia'>Lĩnh vực</p>
+                    <p className='gia1'>Lĩnh vực</p>
                     <p>
                         <Checkbox className='Checkbox'>Back-End</Checkbox>
                     </p>
@@ -402,7 +399,10 @@ function Frontend() {
                                     <i className='khoangcach3'><DatabaseOutlined /> {item.date} Buổi học</i>
                                 </p>
                                 <div className='viewfe4'>
-                                    <Button className='btnfe' onClick={handlechitiet}>Xem chi tiết</Button>
+                                    <Link to={`/detail/${item.id}`}>
+                                        <Button className='btnfe'>Xem chi tiết</Button>
+                                    </Link>
+
                                 </div>
                             </div>
                         ))}

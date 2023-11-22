@@ -4,7 +4,7 @@ import Index from './Components/Index/Index';
 import { BrowserRouter as Router, Route, Navigate, Outlet, Routes, BrowserRouter } from 'react-router-dom';
 import Frontend from './Components/FrontEnd/Frontend';
 import BackEnd from './Components/BackEnd/BackEnd';
-import DetailItem from './Components/Detail/DetailItem';
+import IndexDetail from './Components/Detail/IndexDetail';
 import React from 'react'
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
             <Route path="/" element={<Index />} />
             <Route path="/frontend" element={<Frontend />} />
             <Route path="/backend" element={<BackEnd />} />
-            <Route path="/detail" element={<DetailItem />} />
+            <Route path="/detail/:id" element={<IndexDetail />} />
           </Routes>
         </BrowserRouter>
       </React.StrictMode>
