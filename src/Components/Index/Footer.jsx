@@ -15,9 +15,9 @@ function Footer() {
                                 <p className='txtcheck'>Học theo lộ trình, có định hướng</p>
                             </div>
                             <div>
-                                <h4>
+                                <h3>
                                     BSmart sẽ định hướng và đưa ra các lộ trình học lập trình nhằm phát triển năng lực và niềm đam mê lập trình của bạn để có việc ngay sau khi học.
-                                </h4>
+                                </h3>
                             </div>
                         </div>
                         <div className='item'>
@@ -26,9 +26,9 @@ function Footer() {
                                 <p className='txtcheck'>Nền tảng cốt lõi trong lập trình</p>
                             </div>
                             <div>
-                                <h4>
+                                <h3>
                                     BSmart cung cấp những nền tảng, giá trị tư duy cốt lõi nhất trong lập trình. Bạn sẽ tự tin trước sự thay đổi của công nghệ và môi trường làm việc.
-                                </h4>
+                                </h3>
                             </div>
                         </div>
                         <div className='item'>
@@ -37,9 +37,9 @@ function Footer() {
                                 <p className='txtcheck'>Mài giũa bạn qua thực tế</p>
                             </div>
                             <div>
-                                <h4>
+                                <h3>
                                     Đội ngũ Mentor là những người dày dặn kinh nghiệm qua các dự án thực tế tại các công ty lớn sẽ truyền đạt những kinh nghiệm "máu lửa" cho bạn.
-                                </h4>
+                                </h3>
                             </div>
                         </div>
                     </div>
@@ -50,9 +50,9 @@ function Footer() {
                                 <p className='txtcheck'>Mentor tận tâm</p>
                             </div>
                             <div>
-                                <h4>
+                                <h3>
                                     BSmart sẽ định hướng và đưa ra các lộ trình học lập trình nhằm phát triển năng lực và niềm đam mê lập trình của bạn để có việc ngay sau khi học.
-                                </h4>
+                                </h3>
                             </div>
                         </div>
                         <div className='item'>
@@ -61,9 +61,9 @@ function Footer() {
                                 <p className='txtcheck'>Công nghệ mới, thực tế</p>
                             </div>
                             <div>
-                                <h4>
+                                <h3>
                                     BSmart cung cấp những nền tảng, giá trị tư duy cốt lõi nhất trong lập trình. Bạn sẽ tự tin trước sự thay đổi của công nghệ và môi trường làm việc.
-                                </h4>
+                                </h3>
                             </div>
                         </div>
                         <div className='item'>
@@ -72,9 +72,9 @@ function Footer() {
                                 <p className='txtcheck'>Trao tay chìa khóa thành công</p>
                             </div>
                             <div>
-                                <h4>
+                                <h3>
                                     Đội ngũ Mentor là những người dày dặn kinh nghiệm qua các dự án thực tế tại các công ty lớn sẽ truyền đạt những kinh nghiệm "máu lửa" cho bạn.
-                                </h4>
+                                </h3>
                             </div>
                         </div>
                     </div>

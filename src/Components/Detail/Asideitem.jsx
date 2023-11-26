@@ -62,16 +62,16 @@ const Asideitem = () => {
                                 <div className='feindex'>
                                     <img className='imgfe' src={item.url} alt="" />
                                     <h3 className='titlefe'>{item.title}</h3>
-                                    <p className='mentorfe'>
-                                        <p className='khoangcach1'>Mentor</p>
-                                        <p className='khoangcach'>{item.mentor}</p>
-                                    </p>
-                                    <p className='detailfe'> <TeamOutlined />{item.songuoihoc} Học viên</p>
-                                    <p className='detailfe'>{item.detail}</p>
-                                    <p className='mentorfe1'>
-                                        <p className='khoangcach2'> {item.price} VNĐ</p>
+                                    <div className='mentorfe'>
+                                        <div className='khoangcach1'>Mentor</div>
+                                        <div className='khoangcach'>{item.mentor}</div>
+                                    </div>
+                                    <div className='detailfe'> <TeamOutlined />{item.songuoihoc} Học viên</div>
+                                    <div className='detailfe'>{item.detail}</div>
+                                    <div className='mentorfe1'>
+                                        <div className='khoangcach2'> {item.price} VNĐ</div>
                                         <i className='khoangcach3'><DatabaseOutlined /> {item.date} Buổi học</i>
-                                    </p>
+                                    </div>
                                     <div className='viewfe4'>
                                         <Button className='btnfe'>Xem chi tiết</Button>
                                     </div>

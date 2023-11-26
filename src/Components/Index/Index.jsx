@@ -10,6 +10,7 @@ import Nav from './Nav';
 import Footer from './Footer';
 import Aside from './Aside';
 import {data2} from '../Database/Data';
+
 function Index() {
     let initialSlidesToShow = calculateSlidesToShow();
     const [seconds, setSeconds] = useState(4);
@@ -94,10 +95,10 @@ function Index() {
             <Aside />
             <div className='dinhhuong'>
                 <div className='title'>
-                    <h3> Định hướng và chuẩn hoá lộ trình học tập</h3>
+                    <h2> Định hướng và chuẩn hoá lộ trình học tập</h2>
                 </div>
                 <div className='title'>
-                    <h2>   Học thật, Dự án thật, Mentor tận tâm</h2>
+                    <div>Học thật, Dự án thật, Mentor tận tâm</div>
                 </div>
                 <div className='viewbutton'>
                     <Button className='button'>DANH SÁCH KHOÁ HỌC</Button>
@@ -106,7 +107,7 @@ function Index() {
             </div>
             <div style={{ backgroundColor: "#f5f7fc" }}>
                 <div className='title'>
-                    <h2> Nhận được sự tin tưởng của các đối tác</h2>
+                    <h1> Nhận được sự tin tưởng của các đối tác</h1>
                 </div>
                 <div className='viewtitlefe1'>
                     <div className='slider1'>

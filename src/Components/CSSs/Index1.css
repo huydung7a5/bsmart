@@ -70,7 +70,7 @@ header {
     align-items: center;
     width: 27.5%;
     color: white;
-    font-size: 14px;
+    font-size: 15px;
 }
 
 h5 {
@@ -89,7 +89,7 @@ h5 {
     justify-content: center;
     align-items: center;
     width: 100%;
-    font-size: 14px;
+    font-size: 15px;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -261,7 +261,20 @@ nav {
     justify-content: center;
     display: flex;
     z-index: 0;
-
+}
+.title div{
+    font-size: 30px;
+    line-height: 30px;
+    font-weight: 600;
+    font-style: normal;
+    margin-bottom: 30px;
+}
+.title h2{
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 600;
+    font-style: normal;
+    margin-bottom: 20px;
 }
 
 .titleme {
@@ -275,7 +288,7 @@ nav {
 }
 
 .viewleft {
-    width: 40%;
+    width: 44%;
     margin: 10px;
     justify-content: space-between;
     z-index: 0;
@@ -298,18 +311,19 @@ nav {
     height: auto;
     display: flex;
     /* flex-direction: column; */
-
 }
 
 
-.viewh6 h6 {
+h6 {
+    color: #212529;
     margin-top: -1%;
     padding-bottom: 0;
-    font-size: 16px;
+    font-size: 20px;
     color: black;
-    font-weight: 600;
+    font-weight: 500;
     width: 100%;
     text-align: justify;
+    line-height: 30px;
     height: auto;
     font-family: 'Roboto', sans-serif;
 }
@@ -329,16 +343,18 @@ h1 {
 }
 
 .button {
+    color: white;
     background-color: #ff630e;
+    padding: 15px 30px;
     border-radius: 5px;
-    color: #ffffff;
-    height: auto;
-    font-size: 13px;
+    font-size: 16px;
     font-weight: 700;
-    padding: 10px;
-    text-align: center;
-    margin: 5px;
-    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: #ff630e 2px solid;
+    height: auto;
+    margin: 7px;
+    width: auto;
 }
 
 .button:hover {
@@ -405,9 +421,9 @@ li {
 
 .txtcheck {
     color: #ff630e;
-    font-size: 17px;
+    font-size: 22px;
     font-weight: 700;
-
+    line-height: 1.3;
 }
 
 h4 {
@@ -417,7 +433,8 @@ h4 {
 .item1 {
     display: flex;
     width: 100%;
-    margin-top: -2%;
+    top: 0;
+   
 }
 
 .item {
@@ -502,7 +519,7 @@ h4 {
     background-size: cover;
     background-repeat: no-repeat;
     clip-path: polygon(0 0, 100% 15%, 100% 100%, 0% 100%);
-    padding: 110px 0;
+    padding: 190px 0;
     position: relative;
     overflow: hidden;
     cursor: pointer;
@@ -519,7 +536,7 @@ h4 {
     background-size: cover;
     background-repeat: no-repeat;
     clip-path: polygon(0 15%, 100% 0, 100% 100%, 0% 100%);
-    padding: 110px 0;
+    padding: 190px 0;
     position: relative;
     cursor: pointer;
     filter: grayscale(30%);
@@ -773,7 +790,7 @@ aside {
 }
 
 .itemfe1 {
-    width: 20%;
+  
     height: auto;
     flex-direction: row;
     flex-wrap: wrap;
@@ -782,7 +799,7 @@ aside {
 }
 
 .itemfe {
-    width: 20%;
+ 
     height: auto;
     flex-direction: row;
     flex-wrap: wrap;
@@ -796,6 +813,7 @@ aside {
     flex-direction: row;
     flex-wrap: wrap;
     display: flex;
+    margin-top: 20px;
 }
 
 .feleftmobile {
@@ -916,14 +934,15 @@ aside {
 }
 
 .menu2 {
-    font-weight: 600;
+    font-weight: 500;
     height: auto;
     display: flex;
     list-style-type: none;
     margin-left: 10px;
-    font-size: 14px;
-    color: #ff630e;
+    font-size: 17px;
     font-family: 'Roboto', sans-serif;
+    line-height: 17px;
+    color: #ff630e;
 }
 
 .fe1 {
@@ -951,6 +970,7 @@ aside {
 }
 
 .khoangcach1 {
+    font-size: 16px;
     margin: 2px;
     color: rgb(138, 137, 137);
     font-weight: 600;
@@ -958,6 +978,7 @@ aside {
 
 .khoangcach {
     margin: 3px;
+    font-size: 16px;
     color: #ff630e;
     font-weight: 600;
 }
@@ -966,14 +987,14 @@ aside {
     margin: 4px;
     color: rgb(0, 0, 0);
     font-weight: 600;
+    font-size: 16px;
 }
 
 .khoangcach2 {
     margin: 3px;
-    color: #792b2b;
-    font-weight: 600;
-    font-size: 16px;
-    font-family: 'Roboto', sans-serif;
+    color: firebrick;
+    font-weight: bold;
+    font-size: 18px;
 }
 
 .Checkbox {
@@ -1006,7 +1027,12 @@ aside {
     width: 90%;
     padding-bottom: 50px;
 }
-
+.titlefe{
+    font-size: 24px;
+    font-weight: 700;
+    font-family: 'Roboto', sans-serif;
+    line-height: 23px;
+}
 
 .viewtitlefe {
     width: 90%;
@@ -1060,12 +1086,22 @@ aside {
     flex-wrap: wrap;
     bottom: 120px;
     justify-content: center;
+    font-size: 100%;
+}
+.detailfe{
+    font-size: 100%;
+}
+.detailfe2{
+    font-size: 100%;
+    font-weight: 600;
+
 }
 
 .txtcheck1 {
     color: #ff630e;
-    font-size: 15px;
+    font-size: 24px;
     font-weight: 700;
+    line-height: 34px;
     align-items: center;
     justify-content: center;
     display: flex;
@@ -1099,7 +1135,6 @@ aside {
     background-color: #0e0a38;
     height: auto;
 }
-
 .banquyen {
     width: 100%;
     color: #ffffff;
@@ -1117,7 +1152,7 @@ aside {
 }
 
 .khoangcah4 {
-    margin: -5% 0px 0px 0px;
+    margin: -2% 0px 0px 0%;
     font-family: 'Roboto', sans-serif;
 
 }

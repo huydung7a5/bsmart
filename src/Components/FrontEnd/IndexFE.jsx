@@ -1,14 +1,11 @@
-import { FacebookOutlined, YoutubeOutlined, RightOutlined, ArrowDownOutlined, CheckCircleOutlined, SettingOutlined, DatabaseOutlined, FireOutlined, TeamOutlined, QrcodeOutlined, TrophyOutlined } from '@ant-design/icons';
+import { RightOutlined, ArrowDownOutlined, DatabaseOutlined, TeamOutlined } from '@ant-design/icons';
 import { BrowserRouter as Router, Route, Navigate, Outlet, Routes, Link } from 'react-router-dom';
-import gmail from '../../assets/images/icon-gmail.png';
-import phone from '../../assets/images/icon-phone.png';
-import logo from '../../assets/images/icon-logo.png';
-import shoping from '../../assets/images/icon-shopping-cart.png';
-import { Button, Input, Checkbox, Select, Space } from "antd";
+import { Button, Input, Checkbox, Select } from "antd";
 import { data } from '../Database/Data';
 import Bottom from '../Index/Bottom';
 import { useEffect, useState } from 'react';
-function Frontend() {
+import HeaderFE from './HeaderFE';
+function IndexFE() {
     const [number, setnumber] = useState(0);
     const [to, setto] = useState("");
     const [moveto, setmoveto] = useState("");
@@ -22,6 +19,7 @@ function Frontend() {
     const [isfieldVisible, issetFieldVisible] = useState(false);
     let lastScrollPosition = window.scrollY;
     function handleScroll() {
+
         try {
             const currentScrollPosition = window.scrollY;
             // Check the scroll direction
@@ -40,6 +38,7 @@ function Frontend() {
         } catch {
         }
     }
+
     const handleprice = () => {
         setIsPriceRangeVisible(!isPriceRangeVisible);
     }
@@ -60,12 +59,6 @@ function Frontend() {
     const handlekhoanggia = (e) => {
         const newData = data.filter((item) => item.price >= to && item.price <= moveto);
         setData(newData);
-    }
-    const handleindex = () => {
-        window.location.href = "/";
-    }
-    const handlereload = () => {
-        window.location.reload();
     }
     useEffect(() => {
         const interval = setInterval(() => {
@@ -135,118 +128,15 @@ function Frontend() {
     };
     return (
         <body>
-            <header >
-                <div className="headerindextop">
-                    <div className='headericonleft'>
-                        <div className='headericon1'>
-                            <div className='viewicon'>
-                                <FacebookOutlined />
-                            </div>
-                            <div className='viewicon'>
-                                <h3>in</h3>
-                            </div>
-                            <div className='viewicon'>
-                                <YoutubeOutlined />
-                            </div>
-                        </div>
-                        <div className='headericon2'>
-                            <div className='viewheader'>
-                                <img className="icon" src={gmail} alt="" />
-                                <p> admin@bsmart.edu.vn</p>
-                            </div>
-                            <div className='viewheader'>
-                                <img className='icon' src={phone} alt="" />
-                                <p>  028 9999 79 39</p>
-                            </div>
-                        </div>
-                        <div className='headericonright'>
-                            <Input className='input' type="text" placeholder='Tìm kiếm khoá học' />
-                            <div className='viewlogin'>
-                                <div className='login'>
-                                    <p>Đăng nhập</p>
-                                </div>
-                                <div>
-                                    |
-                                </div>
-                                <div className='login'>
-                                    <p>Đăng ký </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className='headerindexbottom'>
-                    <img className='logo' src={logo} alt="" />
-                    <ul className='menu'>
-                        <li className='menu2'>
-                            <Link className='link' onClick={handleindex}>
-                                Trang chủ</Link>
-                        </li>
-                        <li className='menu1'>Về chúng tôi</li>
-                        <li className='menu1'>Khoá học STEM</li>
-                        <li className='menu1' style={{ color: '#ff630e' }}>Khoá Học
-                            <ul className='submenu'>
-                                <li className='submenu1'>
-                                    <Link className='link' onClick={handlereload}>
-                                        Frontend</Link>
-                                </li>
-                                <li className='submenu1'>
-                                    Back-End</li>
-                                <li className='submenu1'>Database</li>
-                                <li className='submenu1'>Cấp tốc</li>
-                                <li className='submenu1'>Other</li>
-                                <li className='submenu1'>System</li>
-                            </ul>
-                        </li>
-                        <li className='menu1'>Mentor</li>
-                        <li className='menu1'>Blog</li>
-                    </ul>
-                    <div className='soping'>
-                        <img className='shopingcard' src={shoping} alt="" />
-                        <p className='so'>{giohang}</p>
-                    </div>
-
-
-                    {/* Thêm checkbox và icon cho menu di động */}
-                    <input type="checkbox" id="mobileMenuToggle" class="mobile-menu-toggle" />
-                    <label for="mobileMenuToggle" class="mobile-menu-icon">☰</label>
-                    {/* Phần menu di động */}
-                    <div class="mobile-menu">
-                        {/* Thêm các mục menu di động của bạn ở đây */}
-                        <ul>
-                            <li className='menu2'>
-                                <Link className='link' onClick={handleindex}>
-                                    Trang chủ</Link>
-                            </li>
-                            <li>Về chúng tôi</li>
-                            <li>Khoá học STEM</li>
-                            <li>Khoá Học
-                                <ul>
-                                    <li>
-                                        <Link onClick={handlereload}>
-                                            Frontend</Link>
-                                    </li>
-                                    <li>Back-End</li>
-                                    <li>Database</li>
-                                    <li>Cấp tốc</li>
-                                    <li>Other</li>
-                                    <li>System</li>
-                                </ul>
-                            </li>
-                            <li>Mentor</li>
-                            <li>Blog</li>
-                        </ul>
-                    </div>
-                </div>
-            </header>
+            <HeaderFE />
             <nav>
                 <div className='fetitle3'>
                     <div className='viewtitle1'>
                         <h1 className='viewfetitle1'>Danh sách khoá học</h1>
                         <div className='index2'>
-                            <p className='itemfe1'>Trang chủ</p>
-                            <p><RightOutlined /></p>
-                            <p className='itemfe'>Khoá học</p>
+                            <div className='itemfe1'>Trang chủ</div>
+                            <div><RightOutlined /></div>
+                            <div className='itemfe'>Khoá học</div>
                         </div>
 
                     </div>
@@ -254,50 +144,50 @@ function Frontend() {
             </nav>
             <div className='fef'>
                 <div className='feleft'>
-                    <p className='gia1'>Khoảng giá</p>
-                    <p>Từ giá</p>
+                    <div className='gia1'>Khoảng giá</div>
+                    <div>Từ giá</div>
                     <Input value={to} onChange={(e) => setto(e.target.value)} type='text'></Input>
-                    <p>Đến giá</p>
+                    <div>Đến giá</div>
                     <Input value={moveto} onChange={(e) => setmoveto(e.target.value)} type='text'></Input>
-                    <p className='gia1'>Hình thức học</p>
-                    <p>
+                    <div className='gia1'>Hình thức học</div>
+                    <div>
                         <Checkbox className='Checkbox' onChange={onchange} >Online</Checkbox>
-                    </p>
-                    <p>
+                    </div>
+                    <div>
                         <Checkbox className='Checkbox' onChange={onchange1} >Offine</Checkbox>
-                    </p>
-                    <p className='gia1'>Trình độ</p>
-                    <p>
+                    </div>
+                    <div className='gia1'>Trình độ</div>
+                    <div>
                         <Checkbox onChange={onchangede}>Dễ</Checkbox>
-                    </p>
-                    <p>
+                    </div>
+                    <div>
                         <Checkbox onChange={onchangetrungbinh}>Trung bình</Checkbox>
-                    </p>
-                    <p>
+                    </div>
+                    <div>
                         <Checkbox onChange={onchangekho}>Khó</Checkbox>
-                    </p>
-                    <p>
+                    </div>
+                    <div>
                         <Checkbox>Cực khó</Checkbox>
-                    </p>
-                    <p className='gia1'>Lĩnh vực</p>
-                    <p>
+                    </div>
+                    <div className='gia1'>Lĩnh vực</div>
+                    <div>
                         <Checkbox className='Checkbox'>Back-End</Checkbox>
-                    </p>
-                    <p>
+                    </div>
+                    <div>
                         <Checkbox className='Checkbox'>Front-End</Checkbox>
-                    </p>
-                    <p>
+                    </div>
+                    <div>
                         <Checkbox className='Checkbox'>Database</Checkbox>
-                    </p>
-                    <p>
+                    </div>
+                    <div>
                         <Checkbox className='Checkbox'>Cấp tốc</Checkbox>
-                    </p>
-                    <p>
+                    </div>
+                    <div>
                         <Checkbox className='Checkbox'>Other</Checkbox>
-                    </p>
-                    <p>
+                    </div>
+                    <div>
                         <Checkbox className='Checkbox'>System</Checkbox>
-                    </p>
+                    </div>
                     <Button className='btntimkiem' onClick={handlekhoanggia}>Tìm kiếm</Button>
                 </div>
                 <div className='feleftmobile'>
@@ -306,9 +196,9 @@ function Frontend() {
                         </h3>
                         {isPriceRangeVisible && (
                             <div>
-                                <p>Từ giá</p>
+                                <div>Từ giá</div>
                                 <Input value={to} onChange={(e) => setto(e.target.value)} type='text'></Input>
-                                <p>Đến giá</p>
+                                <div>Đến giá</div>
                                 <Input value={moveto} onChange={(e) => setmoveto(e.target.value)} type='text'></Input>
                             </div>
                         )}
@@ -317,12 +207,12 @@ function Frontend() {
                         <h3 className='arr1' onClick={handleform}><ArrowDownOutlined className='arr' /> HÌNH THỨC HỌC</h3>
                         {isFormVisible && (
                             <div>
-                                <p>
+                                <div>
                                     <Checkbox className='Checkbox' onChange={onchange} >Online</Checkbox>
-                                </p>
-                                <p>
+                                </div>
+                                <div>
                                     <Checkbox className='Checkbox' onChange={onchange1} >Offine</Checkbox>
-                                </p>
+                                </div>
                             </div>
                         )}
                     </div>
@@ -330,18 +220,18 @@ function Frontend() {
                         <h3 className='arr1' onClick={handlelevel}><ArrowDownOutlined className='arr' /> TRÌNH ĐỘ</h3>
                         {isLevelVisible && (
                             <div>
-                                <p>
+                                <div>
                                     <Checkbox onChange={onchangede}>Dễ</Checkbox>
-                                </p>
-                                <p>
+                                </div>
+                                <div>
                                     <Checkbox onChange={onchangetrungbinh}>Trung bình</Checkbox>
-                                </p>
-                                <p>
+                                </div>
+                                <div>
                                     <Checkbox onChange={onchangekho}>Khó</Checkbox>
-                                </p>
-                                <p>
+                                </div>
+                                <div>
                                     <Checkbox>Cực khó</Checkbox>
-                                </p>
+                                </div>
                             </div>
                         )}
                     </div>
@@ -349,24 +239,24 @@ function Frontend() {
                         <h3 className='arr1' onClick={handlefield}><ArrowDownOutlined className='arr' /> LĨNH VỰC</h3>
                         {isfieldVisible && (
                             <div>
-                                <p>
+                                <div>
                                     <Checkbox className='Checkbox'>Back-End</Checkbox>
-                                </p>
-                                <p>
+                                </div>
+                                <div>
                                     <Checkbox className='Checkbox'>Front-End</Checkbox>
-                                </p>
-                                <p>
+                                </div>
+                                <div>
                                     <Checkbox className='Checkbox'>Database</Checkbox>
-                                </p>
-                                <p>
+                                </div>
+                                <div>
                                     <Checkbox className='Checkbox'>Cấp tốc</Checkbox>
-                                </p>
-                                <p>
+                                </div>
+                                <div>
                                     <Checkbox className='Checkbox'>Other</Checkbox>
-                                </p>
-                                <p>
+                                </div>
+                                <div>
                                     <Checkbox className='Checkbox'>System</Checkbox>
-                                </p>
+                                </div>
                             </div>
                         )}
                     </div>
@@ -374,30 +264,34 @@ function Frontend() {
                 </div>
                 <div className='feright'>
                     <div className='selec'>
-                        <p className='khoahoc'>{number} khoá học</p>
-                        <Select className='sapxep' onChange={handleChangeSort} defaultValue={{ value: '0', label: 'Sắp xếp khoá học' }}>
-                            <option value="1">Khoá học mới nhất</option>
-                            <option value="2" >Khoá học nhiều người học</option>
-                            <option value="3">Khoá học sắp bắt đầu</option>
-                            <option value="4">A-Z</option>
-                            <option value="5">Z-A</option>
-                        </Select>
+                        <div className='khoahoc'>{number} khoá học</div>
+                        <Select className='sapxep' onChange={handleChangeSort}
+                            defaultValue={{ value: '0', label: 'Sắp xếp khoá học' }}
+                            options={[
+                                { value: '1', label: 'Khoá học mới nhất' },
+                                { value: '2', label: 'Khoá học nhiều người học' },
+                                { value: '3', label: 'Khoá học sắp bắt đầu' },
+                                { value: '4', label: 'A-Z' },
+                                { value: '5', label: 'Z-A' },
+                            ]}
+                        />
+
                     </div>
                     <div className='itemfe2'>
                         {Data.map((item, index) => (
                             <div key={index} className='fe1'>
                                 <img className='imgfe' src={item.url} alt="" />
                                 <h3 className='titlefe'>{item.title}</h3>
-                                <p className='mentorfe'>
-                                    <p className='khoangcach1'>Mentor</p>
-                                    <p className='khoangcach'>{item.mentor}</p>
-                                </p>
-                                <p className='detailfe'> <TeamOutlined />{item.songuoihoc} Học viên</p>
-                                <p className='detailfe'>{item.detail}</p>
-                                <p className='mentorfe1'>
-                                    <p className='khoangcach2'> {item.price} VNĐ</p>
+                                <div className='mentorfe'>
+                                    <div className='khoangcach1'>Mentor</div>
+                                    <div className='khoangcach'>{item.mentor}</div>
+                                </div>
+                                <div className='detailfe2'> <TeamOutlined />{item.songuoihoc} Học viên</div>
+                                <div className='detailfe'>{item.detail}</div>
+                                <div className='mentorfe1'>
+                                    <div className='khoangcach2'> {item.price} VNĐ</div>
                                     <i className='khoangcach3'><DatabaseOutlined /> {item.date} Buổi học</i>
-                                </p>
+                                </div>
                                 <div className='viewfe4'>
                                     <Link to={`/detail/${item.id}`}>
                                         <Button className='btnfe'>Xem chi tiết</Button>
@@ -414,5 +308,4 @@ function Frontend() {
         </body>
     );
 }
-export default Frontend;
-
+export default IndexFE;

@@ -6,10 +6,11 @@ import logo from '../../assets/images/icon-logo.png';
 import shoping from '../../assets/images/icon-shopping-cart.png';
 import Bottom from '../Index/Bottom';
 import Asideitem from './Asideitem';
-import { data3 } from '../Database/Data';
-import { Input } from 'antd';
+import { data3, data4 } from '../Database/Data';
+import { Button, Input } from 'antd';
 import React, { useEffect, useState } from 'react';
 function DetailItem() {
+    const [number, setnumber] = useState('0');
     const [data, setdata] = useState([]);
     const header = document.querySelector('.headerindextop');
     let lastScrollPosition = window.scrollY;
@@ -44,6 +45,15 @@ function DetailItem() {
         const newData = data3.filter(item => item.id === id)
         setdata(newData)
     }, [])
+    useEffect(() => {
+        setnumber(data4[0].number)
+    }, [number])
+    const handleclick = () => {
+        // Tìm kiếm phần tử có id là 1 trong mảng và cập nhật giá trị number
+        const updatedData = data4.find(item => item.id === 1);
+        data4[0].number = data4[0].number + 1;
+        setnumber(updatedData);
+    }
     return (
         <body>
             <header >
@@ -63,24 +73,24 @@ function DetailItem() {
                         <div className='headericon2'>
                             <div className='viewheader'>
                                 <img className="icon" src={gmail} alt="" />
-                                <p> admin@bsmart.edu.vn</p>
+                                <div> admin@bsmart.edu.vn</div>
                             </div>
                             <div className='viewheader'>
                                 <img className='icon' src={phone} alt="" />
-                                <p>  028 9999 79 39</p>
+                                <div>  028 9999 79 39</div>
                             </div>
                         </div>
                         <div className='headericonright'>
                             <Input className='input' type="text" placeholder='Tìm kiếm khoá học' />
                             <div className='viewlogin'>
                                 <div className='login'>
-                                    <p>Đăng nhập</p>
+                                    <div>Đăng nhập</div>
                                 </div>
                                 <div>
                                     |
                                 </div>
                                 <div className='login'>
-                                    <p>Đăng ký </p>
+                                    <div>Đăng ký </div>
                                 </div>
                             </div>
                         </div>
@@ -90,7 +100,7 @@ function DetailItem() {
                     <img className='logo' src={logo} alt="" />
                     <ul className='menu'>
                         <li className='menu1'>
-                            <Link className='link' onClick={handleindex}>
+                            <Link className='link' to={'/'}>
                                 Trang chủ</Link>
                         </li>
                         <li className='menu1'>Về chúng tôi</li>
@@ -98,7 +108,7 @@ function DetailItem() {
                         <li className='menu1' style={{ color: '#ff630e' }}>Khoá Học
                             <ul className='submenu'>
                                 <li className='submenu1'>
-                                    <Link className='link' onClick={handlereload}>
+                                    <Link className='link' to={'/frontend'}>
                                         Frontend</Link>
                                 </li>
                                 <li className='submenu1'>
@@ -114,7 +124,7 @@ function DetailItem() {
                     </ul>
                     <div className='soping'>
                         <img className='shopingcard' src={shoping} alt="" />
-                        <p className='so'>123</p>
+                        <div className='so'>{data4[0].number}</div>
                     </div>
 
 
@@ -155,11 +165,11 @@ function DetailItem() {
                     <div className='viewtitle1'>
                         <h1 className='viewfetitle1'>HTML & CSS Foundation</h1>
                         <div className='index2'>
-                            <p className='itemfe1'>Trang chủ</p>
-                            <p><RightOutlined /></p>
-                            <p className='itemfe'>Khoá học</p>
-                            <p><RightOutlined /></p>
-                            <p className='itemfe'>Chi tiết</p>
+                            <div className='itemfe1'>Trang chủ</div>
+                            <div><RightOutlined /></div>
+                            <div className='itemfe'>Khoá học</div>
+                            <div><RightOutlined /></div>
+                            <div className='itemfe'>Chi tiết</div>
                         </div>
                     </div>
                 </div>
@@ -283,9 +293,13 @@ function DetailItem() {
                                 <img className='imgne' src={item.khoa_hoc.gia.img} />
                                 <div className='gia'> {item.khoa_hoc.gia.gia_goc} VNĐ</div>
                                 <div className='title'><h3> Danh sách lớp học</h3></div>
+                                <Button className='title' onClick={handleclick}>
+                                    Đăng ký ngay
+                                </Button>
                             </div>
 
                         ))}
+
                     </div>
                 </div>
             </footer>

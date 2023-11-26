@@ -84,7 +84,7 @@ function Aside() {
                                         <p className='khoangcach1'>Mentor</p>
                                         <p className='khoangcach'>{item.mentor}</p>
                                     </p>
-                                    <p className='detailfe'> <TeamOutlined />{item.songuoihoc} Học viên</p>
+                                    <p className='detailfe2'> <TeamOutlined />{item.songuoihoc} Học viên</p>
                                     <p className='detailfe'>{item.detail}</p>
                                     <p className='mentorfe1'>
                                         <p className='khoangcach2'> {item.price} VNĐ</p>
@@ -117,7 +117,7 @@ function Aside() {
                                         <p className='khoangcach1'>Mentor</p>
                                         <p className='khoangcach'>{item.mentor}</p>
                                     </p>
-                                    <p className='detailfe'> <TeamOutlined />{item.songuoihoc} Học viên</p>
+                                    <p className='detailfe2'> <TeamOutlined />{item.songuoihoc} Học viên</p>
                                     <p className='detailfe'>{item.detail}</p>
                                     <p className='mentorfe1'>
                                         <p className='khoangcach2'> {item.price} VNĐ</p>
